@@ -1,0 +1,46 @@
+#app {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    min-width: 400px;
+    >#header {
+        z-index: 2;
+        position: relative;
+        width: 100%;
+        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    }
+    >main {
+        >#sidebar {
+            z-index: 1;
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+        }
+        >#views {
+            z-index: 0;
+            background-color: #e5e5e5;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            >div {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                top: 0;
+                display: flex;
+                > div {
+                    flex: 1;
+                    overflow-x: hidden;
+                }
+                & {
+                    opacity: 0;
+                    z-index: 0;
+                }
+                &[active] {
+                    opacity: 1;
+                    z-index: 1;
+                }
+            }
+        }
+    }
+}

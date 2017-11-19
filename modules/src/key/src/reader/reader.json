@@ -1,0 +1,19 @@
+{
+    "@case:views.view": {
+        "reader": {
+            "@key": {
+                "f5": ["reader.reader"],
+                "home": ["reader.scrollToImage", "home"],
+                "end": ["reader.scrollToImage", "end"],
+                "f2": ["reader.toggleShow", 2],
+                "f3": ["reader.toggleShow", 3],
+                "f7": ["reader.scrollToImage", "up"],
+                "f8": ["reader.scrollToImage", "down"],
+                "left": ["reader.scrollToImage", "up"],
+                "right": ["reader.scrollToImage", "down"],
+                "+": ["reader.zoom", "+"],
+                "-": ["reader.zoom", "-"]
+            }
+        }
+    }
+}

@@ -1,0 +1,3 @@
+[index]:not([index="0"])+.hideIfBefore {
+    display: none;
+}

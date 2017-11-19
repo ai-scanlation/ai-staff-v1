@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    word-wrap: break-word;
+}
+
+*:not(.noTransition) {
+    transition: all 0.2s;
+}
+
+// .noTransition * {
+//     transition: all 0s;
+// }
+html,
+body {
+    user-select: none;
+    -webkit-user-select: none;
+    font-family: 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.87);
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5em;
+}
+
+li,
+ol,
+ul {
+    list-style-position: inside;
+    margin: 0 0 0 0.4em;
+    padding: 0;
+}
+
+::selection {
+    background: rgba(222, 98, 98, 0.8);
+    color: #FFF;
+    text-shadow: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@for $header from 1 through 6 {
+    h#{$header} {
+        font-family: 'Segoe UI Semibold';
+        font-weight: bold;
+        font-size: 1em + (6 - $header) * 0.2em;
+        line-height: 1.5em + (6 - $header) * 0.2em; // margin: 0.5em 0;
+    }
+}
+
+img {
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+hr {
+    background-color: #D4D4D4;
+    border: 0px;
+    clear: both;
+    color: #D4D4D4;
+    height: 0.5px;
+    margin-bottom: 0;
+}
+
+// ----- scrollbar -----
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(0, 0, 0, 0.0);
+}
+
+::-webkit-scrollbar-corner {
+    background-color: rgba(0, 0, 0, 0.3)
+}

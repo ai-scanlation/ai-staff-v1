@@ -1,0 +1,14 @@
+.grid {
+    cursor: default;
+    &.grid-scroll {
+        >.col:not(.scroll) {
+            padding-right: 12px;
+        }
+    }
+    .hover:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    .cell { 
+        min-width: 0px;
+    }
+}

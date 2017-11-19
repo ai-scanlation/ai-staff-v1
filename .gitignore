@@ -83,3 +83,12 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Sass
+.sass-cache
+
+# Dist
+dist
+
+# Render
+render

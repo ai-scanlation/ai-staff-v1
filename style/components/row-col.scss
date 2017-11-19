@@ -1,0 +1,39 @@
+.col {
+    flex-direction: column;
+    >.line {
+        margin: 0 auto;
+        min-height: 1px;
+        width: 100%;
+    }
+}
+
+.row {
+    flex-direction: row;
+    >.line {
+        margin: 0;
+        min-width: 1px;
+    }
+    >.vr {
+        margin: 0;
+        min-width: 1px;
+        align-self: center;
+    }
+}
+
+.col,
+.row {
+    display: flex;
+    overflow: hidden;
+    >* {
+        &.noHover {
+            cursor: default!important;
+        }
+        &.full {
+            flex: 1;
+        }
+    }
+    >.line,
+    >.vr {
+        background-color: #7C8086;
+    }
+}

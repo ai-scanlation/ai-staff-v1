@@ -1,0 +1,23 @@
+{
+    "@key": {
+        "q": ["views.view", "reader"],
+        "w": ["views.view", "explorer"],
+        "e": ["views.view", "project"],
+        "r": ["views.view", "redraw"],
+        "t": ["views.view", "setting"],
+        
+        "0": ["explorer.number", "0"],
+        "1": ["explorer.number", "1"],
+        "2": ["explorer.number", "2"],
+        "3": ["explorer.number", "3"],
+        "4": ["explorer.number", "4"],
+        "5": ["explorer.number", "5"],
+        "6": ["explorer.number", "6"],
+        "7": ["explorer.number", "7"],
+        "8": ["explorer.number", "8"],
+        "9": ["explorer.number", "9"],
+
+        "f9": ["explorer.goToReader"],
+        "f10": ["reader.goToExplorer"]
+    }
+}

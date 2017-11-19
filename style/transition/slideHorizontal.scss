@@ -1,0 +1,26 @@
+.slideHorizontal {
+    position: relative;
+    >* {
+        position: absolute;
+        width: 100%;
+    }
+}
+
+.slideHorizontal-enter-active,
+.slideHorizontal-leave-active {
+    opacity: 0;
+    transition: all 0.1s;
+}
+
+.slideHorizontal-leave-active {
+    transform: translateY(-0.5em);
+}
+
+.slideHorizontal-enter-active {
+    transform: translateY(0.5em);
+}
+
+// .slideHorizontal-enter,
+// .slideHorizontal-leave-to {
+//     opacity: 0;
+// }
