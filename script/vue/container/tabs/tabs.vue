@@ -25,9 +25,7 @@ export default {
     },
     created() {
         while (this.parentTab) {
-            if (this.parentTab.$options.name === 'tabs') {
-                return;
-            }
+            if (this.parentTab.$options.name === 'tabs') break;
             this.parentTab = this.parentTab.$parent;
         }
     },
@@ -35,11 +33,15 @@ export default {
         find(this.tabName, (parent, property) => {
             this.$watch("active", (value) => {
                 parent[property] = value;
-                this.updateActive();
-                let [active] = this.$children.filter((child) => child.isActive === true);
-                this.description = active ? active.$options.description : "";
             });
             parent.$watch(property, (value) => {
+                this.$children.some((child) => {
+                    if (child.isActive === true) {
+                        this.description = child.$options.description;
+                        return true;
+                    }
+                });
+                this.updateActive();
                 this.active = value;
             });
             this.active = parent[property];
