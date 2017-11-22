@@ -19,7 +19,7 @@
                 </ai-button>
             </ai-row>
             <ai-line/>
-            <ai-tabs tabs="pages/explorer/components/tabs"
+            <ai-tabs tabs="pages/explorer/components/explorerModeTabs"
                      path="explorer.explorerMode"
                      ref="explorer-explorerMode" />
             <ai-line/>
