@@ -38,8 +38,6 @@ export default {
         this.projectTemplete.data.project.data = this.project = this.readProjectInfo(
             find('explorer').defaultFolder_1
         );
-
-        // // this.project = this.projectData["@scroll"].project;
     },
     methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/)
 };

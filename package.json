@@ -22,6 +22,7 @@
     "animejs": "^2.0.2",
     "chart.js": "^2.6.0",
     "facebook-chat-api": "^1.4.0",
+    "google-auth-library": "^0.12.0",
     "gulp": "^3.9.1",
     "lokijs": "^1.5.0",
     "moment": "^2.18.1",
@@ -32,6 +33,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "ajv": "4.11.8",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "babel-loader": "^7.1.2",

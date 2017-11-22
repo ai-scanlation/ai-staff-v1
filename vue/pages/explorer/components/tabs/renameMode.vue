@@ -62,8 +62,7 @@ export default {
         };
     },
     mounted() {
-        this.renameProjectIDMax = find('project').projectData['@scroll'].project.length;
+        this.renameProjectIDMax = find('project').project.length;
     }
 };
-
 </script>
