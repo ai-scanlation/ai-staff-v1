@@ -13,7 +13,7 @@ module.exports = function complierString(value, self, eachPath = () => {}) {
                     const key = el.replace(/[[\]]/g, '');
                     return Number(key) || key;
                 });
-            // Xử lý findPath và indexString 
+            // Xử lý findPath và indexString
             const args = [findPath, self, true].filter((value) => {
                 return value !== undefined;
             });

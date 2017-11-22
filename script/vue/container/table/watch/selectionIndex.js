@@ -1,13 +1,13 @@
 import {
     find
-} from "modules";
-import anime from "animejs";
+} from 'modules';
+import anime from 'animejs';
 module.exports = function selectionIndex(value) {
-    let selection = find("selection", this).$el;
-    let scroll = find("scroll", this).$el;
-    let row = find(`tablerow[row-${value}]`, this).$el;
-    selection.style.top = row.offsetTop + "px";
-    let scrollTop = undefined;
+    const selection = find('selection', this).$el;
+    const scroll = find('scroll', this).$el;
+    const row = find(`tablerow[row-${value}]`, this).$el;
+    selection.style.top = row.offsetTop + 'px';
+    let scrollTop;
     if (scroll.scrollTop > row.offsetTop) {
         scrollTop = row.offsetTop;
     }
@@ -19,8 +19,8 @@ module.exports = function selectionIndex(value) {
             targets: scroll,
             scrollTop: scrollTop,
             duration: 200,
-            easing: "easeInOutQuad",
-            run: function (a) {
+            easing: 'easeInOutQuad',
+            run: function(a) {
                 scroll.scrollTop = a.animations[0].currentValue;
             }
         });

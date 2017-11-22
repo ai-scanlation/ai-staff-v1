@@ -7,7 +7,7 @@ module.exports = function find(findPath) {
         const arg = [...arguments].slice(1);
         return find(findPath, find(...arg));
     }
-    const returnArray = !!((typeof arguments[1] === 'boolean' || Array.isArray(arguments[1])));
+    const returnArray = !!(typeof arguments[1] === 'boolean' || Array.isArray(arguments[1]));
     if (!findPath) {
         if (returnArray) return [];
         else return;
