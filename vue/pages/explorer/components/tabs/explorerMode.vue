@@ -16,6 +16,10 @@
             <ai-button icon=""
                        path="explorer.makeFolderRedraw"
                        text="Tạo thư mục redraw" />
+            <ai-line/>
+            <ai-button icon=""
+                       path="explorer.uploadToPicasa"
+                       text="Tải lên" />
             <ai-vr/>
             <div class="full" />
             <ai-line class="property-line" />
@@ -55,5 +59,4 @@ export default {
         };
     }
 };
-
 </script>
