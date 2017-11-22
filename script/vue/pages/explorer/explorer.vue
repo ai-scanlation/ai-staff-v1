@@ -20,7 +20,7 @@
             </ai-row>
             <ai-line/>
             <ai-tabs tabs="pages/explorer/components/explorerModeTabs"
-                     path="explorer.explorerMode"
+                     tabName="explorer.explorerMode"
                      ref="explorer-explorerMode" />
             <ai-line/>
             <ai-row size="36">
@@ -79,7 +79,7 @@ export default {
         ...load('units')
     },
     const: {
-        
+
     },
     data() {
         return {
