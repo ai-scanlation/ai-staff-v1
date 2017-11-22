@@ -4,6 +4,8 @@ import {
 
 export default computed(
     'explorer', [
-        'folderPath'
-    ]
+        'folderPath',
+        'targetFolderPath'
+    ],
+    this
 );

@@ -68,7 +68,8 @@
 import {
     load,
     save,
-    include
+    include,
+    computed
 } from 'modules';
 
 export default {
@@ -80,16 +81,17 @@ export default {
     data() {
         return {
             // folderPath: '',
-            targetFolderPath: '',
-            targetFolderChildPattern: '[Ai Scans] {project.project[{explorer.renameProjectID}][1]} - Chap {explorer.renameNumberString}',
-            targetFolderChild: true,
-            folders: [],
-            files: [],
+            // targetFolderPath: '',
+            
+            // targetFolderChildPattern: '[Ai Scans] {project.project[{explorer.renameProjectID}][1]} - Chap {explorer.renameNumberString}',
+            // targetFolderChild: true,
+            // folders: [],
+            // files: [],
 
-            defaultFolder_1: '',
-            defaultFolder_2: '',
-            defaultFolder_3: '',
-            defaultFolder_4: '',
+            // defaultFolder_1: '',
+            // defaultFolder_2: '',
+            // defaultFolder_3: '',
+            // defaultFolder_4: '',
 
             explorerMode: '',
             explorerLimit: true,
@@ -131,11 +133,8 @@ export default {
         };
     },
     mounted() {
-        console.log(require("./computed/computed.js").default);
-
         save(this, [
             'folderPath',
-            'targetFolderPath',
 
             'convertInterpolateID',
 
@@ -152,7 +151,7 @@ export default {
         saveFolderPath() {
             return this.folderPath.replace(/(1 - RAW|2 - ENG|3 - Trans|4 - PSD|5 - PNG).*$/, '5 - PNG');
         },
-        ...require("./computed/computed.js").default
+        ...computed('explorer')
     },
     methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
     watch: include(require.context('./watch/', true, /[^/]+\.js$/), 1, 4, 'js', /src/)

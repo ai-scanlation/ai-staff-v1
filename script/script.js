@@ -4,12 +4,12 @@ import {
     key
 } from 'modules';
 import router from './router';
-import state from './state';
+import store from './store';
 
 new Vue({
     el: '#app',
-    router: router,
-    store: state,
+    router,
+    store,
     render: h => h(app, {
         ref: 'app'
     }),

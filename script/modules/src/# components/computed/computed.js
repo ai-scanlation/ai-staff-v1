@@ -1,17 +1,19 @@
-module.exports = function(path, array) {
-    return array.reduce(function(obj, name) {
-        obj[name] = {
+import state from '~/script/state';
+
+module.exports = function(path, array, self) {
+    const out = {};
+    for (const property in state[path]) {
+        out[property] = {
             get() {
-                return this.$store.state[path][name];
+                return this.$store.state[path][property];
             },
             set(value) {
-                this.$store.commit({
-                    type: 'set',
-                    path: `${path}.${name}`,
+                this.$store.commit('set', {
+                    path: `${path}.${property}`,
                     value: value
                 });
             }
         };
-        return obj;
-    }, {});
+    }
+    return out;
 };
