@@ -39,7 +39,7 @@
                 <ai-button icon=""
                            path="explorer.folderPath"
                            value="{explorer.defaultFolder_3}" />
-                <ai-vr/>            
+                <ai-vr/>
                 <ai-button icon=""
                            path="explorer.folderPath"
                            value="{explorer.defaultFolder_4}" />
@@ -131,6 +131,7 @@ export default {
         };
     },
     mounted() {
+        console.log(this.$store.state.counter);
         save(this, [
             'folderPath',
             'targetFolderPath',
@@ -147,12 +148,11 @@ export default {
         ]);
     },
     computed: {
-        saveFolderPath: function() {
+        saveFolderPath() {
             return this.folderPath.replace(/(1 - RAW|2 - ENG|3 - Trans|4 - PSD|5 - PNG).*$/, '5 - PNG');
         }
     },
     methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
     watch: include(require.context('./watch/', true, /[^/]+\.js$/), 1, 4, 'js', /src/)
 };
-
 </script>
