@@ -87,6 +87,7 @@ export default {
         };
     },
     mounted() {
+        this.explorer();
         save(this, [
             'folderPath',
 
