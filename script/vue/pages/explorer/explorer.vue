@@ -79,7 +79,7 @@ export default {
     },
     data() {
         return {
-            folderPath: '',
+            // folderPath: '',
             targetFolderPath: '',
             targetFolderChildPattern: '[Ai Scans] {project.project[{explorer.renameProjectID}][1]} - Chap {explorer.renameNumberString}',
             targetFolderChild: true,
@@ -131,7 +131,8 @@ export default {
         };
     },
     mounted() {
-        console.log(this.$store.state.counter);
+        console.log(require("./computed/computed.js").default);
+
         save(this, [
             'folderPath',
             'targetFolderPath',
@@ -150,7 +151,8 @@ export default {
     computed: {
         saveFolderPath() {
             return this.folderPath.replace(/(1 - RAW|2 - ENG|3 - Trans|4 - PSD|5 - PNG).*$/, '5 - PNG');
-        }
+        },
+        ...require("./computed/computed.js").default
     },
     methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
     watch: include(require.context('./watch/', true, /[^/]+\.js$/), 1, 4, 'js', /src/)

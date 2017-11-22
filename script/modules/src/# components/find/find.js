@@ -46,3 +46,5 @@ module.exports = function find(findPath) {
         else return '';
     }
 };
+
+global.$$$ = module.exports;

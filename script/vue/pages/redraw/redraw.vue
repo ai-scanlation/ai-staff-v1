@@ -1,6 +1,5 @@
 <template>
     <ai-col class="scroll">
-
         <ai-col class="box margin padding dark"
                 size="36">
             <h6>Kiểm soát thư mục Redraw</h6>

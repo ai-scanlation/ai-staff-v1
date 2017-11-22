@@ -19,7 +19,7 @@ module.exports = function(projectFolder) {
 
         // let jsonPath = path.join(projectFolder, folder, ".aiscans");
         // if (!fs.existsSync(jsonPath)) {
-        //     
+        //
         //     return [-1];
         // }
         // return [-1];
