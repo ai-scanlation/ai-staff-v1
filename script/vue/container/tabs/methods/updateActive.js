@@ -4,8 +4,12 @@ import {
 module.exports = function updateActive(value) {
     let active;
     this.$children.forEach((child) => {
-        child.isActive = child.$options.name === value;
         // Đổi giá trị isActive cho mỗi child
+        if (child.$options.name === value) {
+            child.isActive = true;
+            this.description = child.$options.description;
+        } else child.isActive = false;
+
         if (child.isActive) active = child;
     });
     style.set(this, {

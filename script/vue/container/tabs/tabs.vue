@@ -31,14 +31,9 @@ export default {
     mounted() {
         find(this.tabName, (parent, property) => {
             parent.$watch(property, (value) => {
-                this.$children.some((child) => {
-                    if (child.isActive === true) {
-                        this.description = child.$options.description;
-                        return true;
-                    }
-                });
                 this.updateActive(value);
             });
+            this.updateActive(parent[property]);
         });
     },
     methods: include(require.context('./methods/', true, /[^\/]+\.js$/), 1, 4, 'js', /src/),
