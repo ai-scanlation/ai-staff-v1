@@ -48,5 +48,13 @@ module.exports = {
             'Nearest',
             'Spline'
         ]
+    },
+    picasa: {
+        clientId: '',
+        clientSecret: '',
+        code: '',
+        refreshToken: '',
+        accessToken: '',
+        accessTokenExpires: 0
     }
 };
