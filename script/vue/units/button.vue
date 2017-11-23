@@ -7,7 +7,7 @@
         <div class="br"
              v-if="text !== '' && icon === ''" />
         <span class="text"
-              v-if="text !== ''">{{ text }}</span>
+              v-if="text !== ''">{{ compiledText }}</span>
         <slot/>
         <div class="br"
              v-if="text !== ''" />
@@ -35,9 +35,6 @@ export default {
         value: {
             default: ''
         },
-        // toggle: {
-        //     default: false
-        // },
         text: {
             default: ''
         },
@@ -80,6 +77,8 @@ export default {
         return {
             isActive: false,
             compiledValue: '',
+            compiledText: '',
+            watchersText: [],
             watchersValue: [],
             buttonClick: () => {}
         };
@@ -106,8 +105,11 @@ export default {
             size: style.get('size', this, 40),
             dpi: window.devicePixelRatio
         });
-        const args = [this.path, this.root, true].filter((value) => {
-            return value !== undefined;
+
+        complier(this, 'text', 'compiledText', 'watchersText', this.root, true);
+
+        const args = [this.path, this.root, true].filter((arg) => {
+            return arg !== undefined;
         });
         const [parent, property] = find(...args);
         if (parent
@@ -136,5 +138,4 @@ export default {
         }
     }
 };
-
 </script>

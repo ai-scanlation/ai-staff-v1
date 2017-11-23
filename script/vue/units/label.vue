@@ -51,9 +51,6 @@ export default {
             size: style.get('size', this, 40),
             dpi: window.devicePixelRatio
         });
-        this.$watch('value', () => {
-            complier(this, 'text', 'compiledText', 'watchersText', this.root, true);
-        });
         complier(this, 'text', 'compiledText', 'watchersText', this.root, true);
     }
 };
