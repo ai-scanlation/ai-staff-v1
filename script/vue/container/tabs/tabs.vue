@@ -2,23 +2,23 @@
 import {
     find,
     include
-} from "modules";
+} from 'modules';
 export default {
-    name: "tabs",
-    props: ["tabs", "tabName", "noChangeParent"],
+    name: 'tabs',
+    props: ['tabs', 'tabName', 'noChangeParent'],
     style: {
-        group: "default",
+        group: 'default',
         overwrite: true,
         rules: {
             '[tabs="#{$tabs}"]': [
-                "min-height: #{$size}px"
+                'min-height: #{$size}px'
             ]
         }
     },
-    render: require("./tabsRender"),
+    render: require('./tabsRender'),
     data() {
         return {
-            description: "",
+            description: '',
             parentTab: this.$parent
         };
     },
@@ -41,6 +41,6 @@ export default {
             });
         });
     },
-    methods: include(require.context("./methods/", true, /[^\/]+\.js$/), 1, 4, "js", /src/),
+    methods: include(require.context('./methods/', true, /[^\/]+\.js$/), 1, 4, 'js', /src/),
 };
 </script>
