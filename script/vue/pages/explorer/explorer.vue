@@ -88,19 +88,6 @@ export default {
     },
     mounted() {
         this.explorer();
-        save(this, [
-            'folderPath',
-
-            'convertInterpolateID',
-
-            'defaultFolder_1',
-            'defaultFolder_2',
-            'defaultFolder_3',
-            'defaultFolder_4',
-
-            'renamePattern',
-            'explorerMode'
-        ]);
     },
     computed: {
         saveFolderPath() {
