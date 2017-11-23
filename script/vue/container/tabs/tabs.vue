@@ -5,7 +5,7 @@ import {
 } from "modules";
 export default {
     name: "tabs",
-    props: ["tabs", "tabName", "null", "noChangeParent"],
+    props: ["tabs", "tabName", "noChangeParent"],
     style: {
         group: "default",
         overwrite: true,
@@ -18,7 +18,6 @@ export default {
     render: require("./tabsRender"),
     data() {
         return {
-            active: "",
             description: "",
             parentTab: this.$parent
         };
@@ -31,9 +30,6 @@ export default {
     },
     mounted() {
         find(this.tabName, (parent, property) => {
-            this.$watch("active", (value) => {
-                parent[property] = value;
-            });
             parent.$watch(property, (value) => {
                 this.$children.some((child) => {
                     if (child.isActive === true) {
@@ -41,10 +37,8 @@ export default {
                         return true;
                     }
                 });
-                this.updateActive();
-                this.active = value;
+                this.updateActive(value);
             });
-            this.active = parent[property];
         });
     },
     methods: include(require.context("./methods/", true, /[^\/]+\.js$/), 1, 4, "js", /src/),
