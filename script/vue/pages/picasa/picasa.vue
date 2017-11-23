@@ -61,7 +61,7 @@
                                       placeholder="picasa.accessToken" />
                             <ai-button path="#picasa.getaccessTokenExpires"
                                        value="{picasa.accessToken}"
-                                       text="Hiệu lực trong {picasa.accessTokenExpiresTime} giây nữa"
+                                       text="{picasa.accessTokenExpiresString}"
                                        icon="" />
                         </ai-row>
                     </ai-col>
@@ -73,7 +73,6 @@
 <script>
 import {
     load,
-    // include,
     computed
 } from 'modules';
 
@@ -88,7 +87,7 @@ export default {
     },
     data() {
         return {
-            accessTokenExpiresTime: 0
+            accessTokenExpiresString: 0
         };
     },
     computed: {
@@ -96,7 +95,8 @@ export default {
     },
     mounted() {
         setInterval(() => {
-            this.accessTokenExpiresTime = moment(this.accessTokenExpires).format('X') - moment().format('X');
+            const time = moment(this.accessTokenExpires).format('X') - moment().format('X');
+            this.accessTokenExpiresString = time > 0 ?  `Còn ${time} giây` : 'Hết hạn';
         }, 1000);
     }
 };
