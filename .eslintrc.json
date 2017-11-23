@@ -4,7 +4,9 @@
         "browser": true,
         "es6": true
     },
-    "extends": ["plugin:vue-libs/recommended"],
+    "extends": [
+        "plugin:vue/recommended"
+    ],
     "parserOptions": {
         "ecmaVersion": 6,
         "sourceType": "module",
@@ -14,7 +16,6 @@
         }
     },
     "plugins": [
-        "html",
         "vue"
     ],
     "rules": {
@@ -43,6 +44,7 @@
         "space-before-function-paren": ["error", "never"],
         "operator-linebreak": ["error", "before"],
         "eol-last": "off",
-        "no-throw-literal": "off"
+        "no-throw-literal": "off",
+        "prefer-const": "error"
     }
 }
