@@ -1,10 +1,71 @@
 <template>
     <ai-col class="scroll">
-        <ai-col class="box margin padding dark"
-                size="30">
+        <ai-col class="box margin padding dark">
             <ai-paragraph>
-                <h6>Danh sách các Project của nhóm</h6>
-                
+                <h5>Danh sách các Project của nhóm</h5>
+                <ai-space/>
+                <ai-border size="40">
+                    <ai-col>
+                        <ai-row>
+                            <ai-button icon=""
+                                       text="Định danh ứng dụng" />
+                            <ai-input path="picasa.clientId"
+                                      class="full"
+                                      placeholder="picasa.clientId" />
+                        </ai-row>
+                    </ai-col>
+                    <ai-line/>
+                    <ai-col>
+                        <ai-row>
+                            <ai-button icon=""
+                                       text="Mã bí mật" />
+                            <ai-input path="picasa.clientSecret"
+                                      class="full"
+                                      placeholder="picasa.clientSecret" />
+                        </ai-row>
+                    </ai-col>
+                    <ai-line/>
+                    <ai-col>
+                        <ai-row>
+                            <ai-button icon=""
+                                       text="Mã khởi tạo sau khi đăng nhập" />
+                            <ai-input path="picasa.code"
+                                      class="full"
+                                      placeholder="picasa.code" />
+                            <ai-button text="Lấy Code"
+                                       path="#picasa.getCodeAndToken"
+                                       icon="" />
+                        </ai-row>
+                    </ai-col>
+                    <ai-line/>
+                    <ai-col>
+                        <ai-row>
+                            <ai-button text="Mã khởi tạo mã truy cập"
+                                       icon="" />
+                            <ai-input path="picasa.refreshToken"
+                                      class="full"
+                                      placeholder="picasa.refreshToken" />
+                            <ai-button text="Khởi tạo mã truy cập mới"
+                                       path="#picasa.renewAccessToken"
+                                       value="{picasa.refreshToken}"
+                                       icon="" />
+                        </ai-row>
+                    </ai-col>
+                    <ai-line/>
+                    <ai-col>
+                        <ai-row>
+                            <ai-button text="Mã truy cập"
+                                       icon="" />
+                            <ai-input path="picasa.accessToken"
+                                      class="full"
+                                      placeholder="picasa.accessToken" />
+                            <ai-button path="#picasa.getaccessTokenExpires"
+                                       value="{picasa.accessToken}"
+                                       text="Hiệu lực trong {picasa.accessTokenExpiresTime} giây nữa"
+                                       icon="" />
+                        </ai-row>
+                    </ai-col>
+                </ai-border>
             </ai-paragraph>
         </ai-col>
     </ai-col>
@@ -12,9 +73,12 @@
 <script>
 import {
     load,
-    include,
-    find
+    // include,
+    computed
 } from 'modules';
+
+import moment from 'moment';
+moment.locale('vi');
 
 export default {
     name: 'picasa',
@@ -22,14 +86,18 @@ export default {
         ...load('container'),
         ...load('units')
     },
-    data: () => ({
-        // ...include(require.context('./data/', false, /[^/]+\.js$/), 1, 1)
-
-    }),
+    data() {
+        return {
+            accessTokenExpiresTime: 0
+        };
+    },
+    computed: {
+        ...computed('picasa')
+    },
     mounted() {
-
+        setInterval(() => {
+            this.accessTokenExpiresTime = moment(this.accessTokenExpires).format('X') - moment().format('X');
+        }, 1000);
     }
-    // methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/)
 };
-
 </script>
