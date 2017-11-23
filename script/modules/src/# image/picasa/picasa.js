@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 app.listen(3000);
 
-import find from '../# components/find/find';
+import find from '../../# components/find/find';
 import axios from 'axios';
 
 module.exports = (function() {
