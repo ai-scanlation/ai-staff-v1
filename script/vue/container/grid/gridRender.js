@@ -1,4 +1,4 @@
-// table render function 
+// table render function
 
 module.exports = function render(h) {
     return h('ai-col', {
