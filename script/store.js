@@ -14,10 +14,28 @@ export default new Vuex.Store({
             let self = state;
             const list = payload.path.split('.');
             while (list.length > 1) {
-                self = state[list[0]];
+                self = self[list[0]];
                 list.shift();
             }
             self[list[0]] = payload.value;
         }
-    }
+    },
+    getters: (function getter(getters, object, path = '') {
+        for (const key in object) {
+            if (typeof object[key] == 'object' && !Array.isArray(object[key])) {
+                getter(getters, object[key], path + key + '.');
+            } else {
+                getters[`get__${path}${key}`] = function($state) {
+                    let self = $state;
+                    const list = `${path}${key}`.split('.');
+                    while (list.length >= 1) {
+                        self = self[list[0]];
+                        list.shift();
+                    }
+                    return self;
+                };
+            }
+        }
+        return getters;
+    })({}, state)
 });

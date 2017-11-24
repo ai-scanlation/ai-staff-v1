@@ -4,8 +4,6 @@ module.exports = {
         targetFolderPath: '',
         targetFolderChildPattern: '[Ai Scans] {project.project[{explorer.renameProjectID}][1]} - Chap {explorer.renameNumberString}',
         targetFolderChild: true,
-        folders: [],
-        files: [],
 
         defaultFolder_1: '',
         defaultFolder_2: '',
@@ -49,12 +47,12 @@ module.exports = {
             'Spline'
         ]
     },
-    picasa: {
-        clientId: '',
-        clientSecret: '',
-        code: '',
-        refreshToken: '',
-        accessToken: '',
-        accessTokenExpires: 0
+    google: {
+        auth: {
+            'access_token': '',
+            'refresh_token': '',
+            'token_type': 'Bearer',
+            'expiry_date': 0
+        }
     }
 };
