@@ -24,6 +24,12 @@
 
 .label {
     cursor: default;
+    &.hover:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    &.light{
+        background-color: #4b5259;
+    }
 }
 
 .button {
