@@ -33,7 +33,6 @@ module.exports = function find(findPath) {
             );
         const result = recursiveFind(name, ref, where);
         if (!result) {
-            console.log(arguments);
             throw "Không tìm thấy: component trong path: '" + findPath + "' ";
         }
         if (property && result[property] === undefined) {
