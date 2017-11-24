@@ -6,6 +6,7 @@
         <ai-button icon="" path="views.view" value="explorer" />
         <ai-button icon="" path="views.view" value="project" />
         <ai-button icon="" path="views.view" value="redraw" />
+        <ai-button icon="" path="views.view" value="drive" />
         <ai-button class="full noHover" />
         <ai-button icon="" path="views.view" value="setting" />
     </div>

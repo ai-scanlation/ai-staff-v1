@@ -5,11 +5,11 @@
                 <h5>Danh sách các Project của nhóm</h5>
                 <ai-space/>
                 <ai-border size="40">
-                    <ai-col>
+                    <!-- <ai-col>
                         <ai-row>
                             <ai-button icon=""
                                        text="Định danh ứng dụng" />
-                            <ai-input path="picasa.clientId"
+                            <ai-input path="$google.auth.e"
                                       class="full"
                                       placeholder="picasa.clientId" />
                         </ai-row>
@@ -24,7 +24,8 @@
                                       placeholder="picasa.clientSecret" />
                         </ai-row>
                     </ai-col>
-                    <ai-line/>
+                    <ai-line/> 
+                    -->
                     <ai-col>
                         <ai-row>
                             <ai-button icon=""
@@ -33,7 +34,7 @@
                                       class="full"
                                       placeholder="picasa.code" />
                             <ai-button text="Lấy Code"
-                                       path="#picasa.getCodeAndToken"
+                                       path="picasa.getCodeAndToken"
                                        icon="" />
                         </ai-row>
                     </ai-col>
@@ -46,8 +47,6 @@
                                       class="full"
                                       placeholder="picasa.refreshToken" />
                             <ai-button text="Khởi tạo mã truy cập mới"
-                                       path="#picasa.renewAccessToken"
-                                       value="{picasa.refreshToken}"
                                        icon="" />
                         </ai-row>
                     </ai-col>
@@ -80,24 +79,20 @@ import moment from 'moment';
 moment.locale('vi');
 
 export default {
-    name: 'picasa',
+    name: 'drive',
     components: {
         ...load('container'),
         ...load('units')
     },
-    data() {
-        return {
-            accessTokenExpiresString: 0
-        };
-    },
     computed: {
         ...computed('picasa')
     },
+    // methods: include(require.context('./methods/', false, /[^/]+\.js$/)),
     mounted() {
-        setInterval(() => {
-            const time = moment(this.accessTokenExpires).format('X') - moment().format('X');
-            this.accessTokenExpiresString = time > 0 ?  `Còn ${time} giây` : 'Hết hạn';
-        }, 1000);
+        // setInterval(() => {
+        //     const time = moment(this.accessTokenExpires).format('X') - moment().format('X');
+        //     this.accessTokenExpiresString = time > 0 ?  `Còn ${time} giây` : 'Hết hạn';
+        // }, 1000);
     }
 };
 </script>
