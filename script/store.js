@@ -25,7 +25,7 @@ export default new Vuex.Store({
             if (typeof object[key] == 'object' && !Array.isArray(object[key])) {
                 getter(getters, object[key], path + key + '.');
             } else {
-                getters[`get__${path}${key}`] = function($state) {
+                getters[`get:${path}${key}`] = function($state) {
                     let self = $state;
                     const list = `${path}${key}`.split('.');
                     while (list.length >= 1) {
