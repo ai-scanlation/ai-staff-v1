@@ -1,19 +1,34 @@
 import complierString from './complierString';
-module.exports = function complier(component, from, to, watch, self, clear) {
+module.exports = function complier(component, from, to, watchers, self, clear) {
     if (typeof component[from] === 'string') {
         if (clear) {
-            component[watch].forEach((eachWatch) => {
-                eachWatch();
+            component[watchers].forEach((unwatch) => {
+                unwatch();
             });
         }
-        const value = complierString(component[from], self, (parent, property) => {
-            if (clear) {
-                component[watch].push(parent.$watch(property, () => {
-                    complier(component, from, to, watch, self, false);
-                }));
+        component[to] = complierString(component[from], self,
+            (parent, property) => {
+                if (clear) {
+                    component[watchers].push(parent.$watch(
+                        property,
+                        () => {
+                            complier(component, from, to, watchers, self, false);
+                        }
+                    ));
+                }
+            }, (path) => {
+                const $store = document.getElementById('app').__vue__.$store;
+                if (clear) {
+                    component[watchers].push($store.watch(
+                        () => $store.getters['get:' + path],
+                        () => {
+                            complier(component, from, to, watchers, self, false);
+                        }
+                    ));
+                }                    
+                return $store.getters['get:' + path];
             }
-        });
-        component[to] = value;
+        );
     } else {
         component[to] = component[from];
     }
