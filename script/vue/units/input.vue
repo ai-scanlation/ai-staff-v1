@@ -104,25 +104,46 @@ export default {
             size: style.get('size', this, 40),
             dpi: window.devicePixelRatio
         });
-        const args = [this.path, this.root, true].filter((value) => {
-            return value !== undefined;
-        });
-        const [parent, property] = find(...args);
-        if (parent
-            && property !== undefined
-            && parent[property] !== undefined) {
-            this.value = parent[property];
-            this.$watch('value', (value) => {
-                parent[property] = value;
-                this.updateTextareaHeight();
-            });
-            parent.$watch(property, (value) => {
-                this.value = value;
-            });
-        }
         setTimeout(() => {
             this.updateTextareaHeight();
         }, 1000);
+
+        if (this.path[0] === '$') {
+            this.value = this.$store.getters['get:' + this.path.substr(1)];
+            this.$store.watch(
+                () => this.$store.getters['get:' + this.path.substr(1)],
+                (value) => {
+                    this.value = value;
+                    this.$store.commit('set', {
+                        path: this.path.substr(1),
+                        value: value
+                    });
+                }
+            );
+            this.$watch('value', (value) => {
+                this.$store.commit('set', {
+                    path: this.path.substr(1),
+                    value: value
+                });
+            });
+        } else {
+            const args = [this.path, this.root, true].filter((value) => {
+                return value !== undefined;
+            });
+            const [parent, property] = find(...args);
+            if (parent
+                && property !== undefined
+                && parent[property] !== undefined) {
+                this.value = parent[property];
+                this.$watch('value', (value) => {
+                    parent[property] = value;
+                    this.updateTextareaHeight();
+                });
+                parent.$watch(property, (value) => {
+                    this.value = value;
+                });
+            }
+        }
     },
     methods: {
         updateTextareaHeight() {
@@ -134,5 +155,4 @@ export default {
         }
     }
 };
-
 </script>
