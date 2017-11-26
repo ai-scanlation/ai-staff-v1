@@ -73,7 +73,6 @@
 <script>
 import {
     load,
-    save,
     include,
     computed
 } from 'modules';
@@ -89,6 +88,7 @@ export default {
     },
     data() {
         return {
+            targetFolderChildPattern: '[Ai Scans] {project.project[{explorer.renameProjectID}][1]} - Chap {explorer.renameChapterIDString}',
             ...include(require.context('./data/', false, /[^/]+\.js$/), 1, 1)
         };
     },

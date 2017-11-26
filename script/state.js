@@ -2,7 +2,6 @@ module.exports = {
     explorer: {
         folderPath: '',
         targetFolderPath: '',
-        targetFolderChildPattern: '[Ai Scans] {project.project[{explorer.renameProjectID}][1]} - Chap {explorer.renameNumberString}',
         targetFolderChild: true,
 
         defaultFolder_1: 'D:\\OneDrive\\[Ai Scans]',
