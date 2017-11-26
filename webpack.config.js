@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: './vue/index.js',
+    entry: './script/script.js',
     devtool: '#eval-source-map',
     module: {
         rules: [{
@@ -59,7 +59,8 @@ module.exports = {
             'components': path.join(__dirname, 'app/src/renderer/components')
         },
         modules: [
-            path.join(__dirname, 'node_modules')
+            path.join(__dirname, 'node_modules'),
+            path.resolve(__dirname, 'script/modules')
         ]
     },
     target: 'electron-main'
