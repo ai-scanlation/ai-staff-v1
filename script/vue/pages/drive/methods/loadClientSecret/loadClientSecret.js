@@ -17,7 +17,6 @@ module.exports = function() {
             console.log('Error loading client secret file: ' + err);
             return;
         }
-        console.log(JSON.parse(content).web);
         this.$store.commit('set', {
             path: 'google.client_secret',
             value: JSON.parse(content).web

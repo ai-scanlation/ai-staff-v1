@@ -21,7 +21,6 @@
                             <ai-button text="Bí mật"
                                        icon="" />
                         </ai-col>
-                        <ai-line/>
                         <ai-col class="full">
                             <ai-label text="{$google.client_secret.client_id}"
                                       class="hover light" />
@@ -30,30 +29,39 @@
                                       class="hover light" />
                         </ai-col>
                         <ai-line/>
-                        <ai-button icon="">
+                        <ai-button icon=""
+                                   path="drive.loginWithGoogle">
                             <span class="slot"
                                   style="padding-left: 0">
-                                Đăng nhập <br/> với Google 
+                                Đăng nhập <br/> tài khoản Google 
                             </span>
                         </ai-button>
                     </ai-row>
                     <ai-line/>
                     <ai-row>
-                        <ai-button text="Mã khởi tạo mã truy cập"
-                                   icon="" />
-                        <ai-input path="$google.auth.refresh_token"
-                                  class="full" />
-                        <ai-button text="Khởi tạo mã truy cập mới"
-                                   icon="" />
-                    </ai-row>
-                    <ai-line/>
-                    <ai-row>
-                        <ai-button text="Mã truy cập"
-                                   icon="" />
-                        <ai-input path="$google.auth.access_token"
-                                  class="full" />
-                        <!-- <ai-button text="{picasa.accessTokenExpiresString}"
-                                        icon="" /> -->
+                        <ai-col>
+                            <ai-button text="Mã khởi tạo mã truy cập"
+                                       icon="" />
+                            <ai-line/>
+                            <ai-button text="Mã truy cập"
+                                       icon="" />
+                        </ai-col>
+                        <ai-col class="full">
+                            <ai-input path="$google.auth.refresh_token"
+                                      class="full" />
+                            <ai-line/>
+                            <ai-input path="$google.auth.access_token"
+                                      class="full" />
+                        </ai-col>
+                        <ai-line/>
+                        <ai-button path="#.openFile"
+                                   value="https://myaccount.google.com/u/{$google.email}/permissions"
+                                   icon="">
+                            <span class="slot"
+                                  style="padding-left: 0">
+                                    Hủy cấp phép <br/> {{$store.state.google.email}}
+                                </span>
+                        </ai-button>
                     </ai-row>
                 </ai-border>
             </ai-paragraph>
