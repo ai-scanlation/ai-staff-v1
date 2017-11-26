@@ -2,7 +2,7 @@
     <ai-row class="cell"
             :style="{ 'opacity':`${this.opacity}` }"
             :error="this.value.error"
-            :converted="this.value.converted">
+            :done="this.value.done">
         <div class="file-icon"
              :style="{ 'background-image': `url(${this.src})` }" />
         <span>

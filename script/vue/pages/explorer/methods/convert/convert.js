@@ -15,7 +15,7 @@ module.exports = function convertFunction() {
     });
 
     files.forEach((file) => {
-        Vue.set(file[7], 'converted', file);
+        Vue.set(file[7], 'done', false);
         let width = complierString('{explorer.allowConvertWidth[{explorer.convertWidthID}]}');
         width = (width === '') ? complierString('{explorer.customConvertWidth}')
             : (width === '100%' ? undefined
@@ -29,7 +29,7 @@ module.exports = function convertFunction() {
             interpolate: complierString('{explorer.allowConvertInterpolate[{explorer.convertInterpolateID}]}')
         }, (err, object) => {
             if (err) throw err;
-            Vue.set(object.file[7], 'converted', true);
+            Vue.set(object.file[7], 'done', true);
         });
     });
 };

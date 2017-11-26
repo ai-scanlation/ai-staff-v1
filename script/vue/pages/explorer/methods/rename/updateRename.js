@@ -21,9 +21,8 @@ module.exports = function updateRename() {
         Vue.set(file[7], 'name', patternToName(renamePattern, file));
     });
     for (let i = 0; i < files.length; i++) {
-        Vue.set(files[i][2], 'error', false);
-        Vue.set(files[i][7], 'error', false);
-        Vue.set(files[i][7], 'converted', false);
+        Vue.set(files[i][2], 'error', false); 
+        Vue.set(files[i][7], 'done', false); 
         if (this.explorerMode !== 'renameMode') continue;
         const iName = files[i][2].name;
         const iRename = files[i][7].name;
