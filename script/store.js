@@ -18,6 +18,18 @@ export default new Vuex.Store({
                 list.shift();
             }
             self[list[0]] = payload.value;
+        },
+        push(state, payload) {
+            if (!payload.path) return;
+            let self = state;
+            const list = payload.path.split('.');
+            while (list.length > 1) {
+                self = self[list[0]];
+                list.shift();
+            }
+            if (typeof self[list[0]] == 'object' && Array.isArray(self[list[0]])) {
+                self[list[0]].push(payload.value);
+            } else console.error('Commit `push` vào một thành viên không phải mảng', payload);
         }
     },
     getters: (function getter(getters, object, path = '') {
