@@ -117,8 +117,9 @@ module.exports = {
         },
         'title[]': {
             click(event, cell, cellIndex) {
-                if (cellIndex >= 3 && cellIndex <= 6)
-                    {find("explorer").explorerToggleProperty(cellIndex - 1, 0);}
+                if (cellIndex >= 3 && cellIndex <= 6) {
+                    find('explorer').explorerToggleProperty(cellIndex - 1, 0);
+                }
             }
         },
         'back': {

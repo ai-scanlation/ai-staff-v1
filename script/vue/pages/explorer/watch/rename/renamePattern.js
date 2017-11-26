@@ -1,10 +1,10 @@
 module.exports = function renamePattern(value) {
     this.updateRename();
-    let renameProjectID = /<#([\d\.]+)>/.exec(value),
-        renameIndex = /<(\d+)\+>/.exec(value),
-        renameNumber = /<([\d\.]+)>/.exec(value);
+    const renameProjectID = /<#([\d\.]+)>/.exec(value);
+    const renamePageID = /<(\d+)\+>/.exec(value);
+    const renameChapterID = /<([\d\.]+)>/.exec(value);
 
     this.renameProjectID = renameProjectID ? renameProjectID[1] : 1;
-    this.renameIndex = renameIndex ? renameIndex[1] : 1;
-    this.renameNumber = renameNumber ? renameNumber[1] : 1;
+    this.renamePageID = renamePageID ? renamePageID[1] : 1;
+    this.renameChapterID = renameChapterID ? renameChapterID[1] : 1;
 };
