@@ -13,6 +13,7 @@ module.exports = {
         explorerLimit: true,
 
         renamePattern: '[Ai Scans] Shiki Chap <15> - <0+><ext>',
+
         renameProjectID: 1,
         renameProjectIDString: '00',
         renameChapterID: 1,
@@ -47,13 +48,18 @@ module.exports = {
             'Spline'
         ]
     },
+    project: {
+        project: []
+    },
     google: {
+        email: '',
         auth: {
             'access_token': '',
             'refresh_token': '',
             'token_type': 'Bearer',
             'expiry_date': 0
         },
+        oauth2Client: {},
         client_secret: {
             'client_id': '',
             'project_id': '',
@@ -63,6 +69,11 @@ module.exports = {
             'client_secret': '',
             'redirect_uris': ['http://localhost:3000/auth'],
             'javascript_origins': ['http://localhost:3000']
+        },
+        upload: {
+            status: '',
+            cloudFiles: [],
+            localFiles: []
         }
     }
 };
