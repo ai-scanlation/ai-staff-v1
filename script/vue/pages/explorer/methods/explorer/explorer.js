@@ -64,6 +64,7 @@ module.exports = function() {
                         {
                             stat: stat,
                             type: 'file',
+                            path: filePath,
                             count: 0
                         },
                         index,

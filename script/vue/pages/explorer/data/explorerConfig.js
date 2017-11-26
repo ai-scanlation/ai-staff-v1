@@ -102,6 +102,20 @@ module.exports = {
             'folders': {
                 '@show': [1, 1, 0, 0, 0, 0, 0]
             }
+        },
+        'uploadMode': {
+            'title': {
+                '@show': [1, 1, 1, 0, 0, 0, 0]
+            },
+            'files': {
+                '@show': [1, 1, 1, 0, 0, 0, 0]
+            },
+            'back': {
+                '@show': [1, 1, 0, 0, 0, 0, 0]
+            },
+            'folders': {
+                '@show': [1, 1, 0, 0, 0, 0, 0]
+            }
         }
     },
     nativeOn: {
