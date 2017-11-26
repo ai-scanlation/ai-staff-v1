@@ -16,6 +16,7 @@
 <script>
 import {
     load,
+    computed,
     include,
     find
 } from 'modules';
@@ -27,9 +28,11 @@ export default {
         ...load('units')
     },
     data: () => ({
-        ...include(require.context('./data/', false, /[^/]+\.js$/), 1, 1),
-        project: []
+        ...include(require.context('./data/', false, /[^/]+\.js$/), 1, 1)
     }),
+    computed: {
+        ...computed('project')
+    },
     mounted() {
         // this.project = ;
         // console.log(this.readProjectInfo(
@@ -41,5 +44,4 @@ export default {
     },
     methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/)
 };
-
 </script>
