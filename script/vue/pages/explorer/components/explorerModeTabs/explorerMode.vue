@@ -1,6 +1,7 @@
 <template>
     <ai-col :active="isActive">
         <ai-row size="36">
+            <!--
             <ai-button icon=""
                        text="Thư mục mới" />
             <ai-vr/>
@@ -13,6 +14,7 @@
             <ai-button icon=""
                        text="Di chuyển" />
             <ai-line/>
+            -->
             <ai-button icon=""
                        path="explorer.makeFolderRedraw"
                        text="Tạo thư mục redraw" />

@@ -45,8 +45,7 @@
 </template>
 <script>
 import {
-    load,
-    find
+    load
 } from 'modules';
 export default {
     name: 'renameMode',
@@ -58,11 +57,9 @@ export default {
     data() {
         return {
             isActive: false,
-            renameProjectIDMax: 10
         };
     },
     mounted() {
-        this.renameProjectIDMax = find('project').project.length;
     }
 };
 </script>

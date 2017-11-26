@@ -127,12 +127,8 @@ export default {
     data() {
         return {
             isActive: false,
-            renameProjectIDMax: 10
         };
     },
-    mounted() {
-        this.renameProjectIDMax = find('project').project.length;
-    }
+    mounted() {}
 };
-
 </script>
