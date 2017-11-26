@@ -12,10 +12,14 @@ module.exports = function updateActive(value) {
 
         if (child.isActive) active = child;
     });
-    style.set(this, {
-        size: active.$el.offsetHeight,
-        tabs: this.tabs
-    });
+
+    // Chỗ này này còn lỗi vì phải đợi thẻ con render xong rồi mới set được chiều cao cho thẻ cha
+    setTimeout(() => {
+        style.set(this, {
+            size: active.$el.offsetHeight,
+            tabs: this.tabs
+        });
+    }, 0);
 
     // Vì cơ chế dở ẹc mà mình viết nên chỗ này còn 1 mớ lỗi
     // Nếu tabs nằm trong tabs > Tabs con thay đổi > Tab cha bị hụt chiều cao > Lỗi
