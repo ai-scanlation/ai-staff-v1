@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: './script/script.js',
+    entry: ['babel-polyfill', './script/script.js'],
     devtool: '#eval-source-map',
     module: {
         rules: [{
@@ -53,6 +53,11 @@ module.exports = {
         libraryTarget: 'commonjs2',
         path: path.resolve(__dirname, 'dist')
     },
+    externals: {
+        'googleapis': 'commonjs googleapis',
+        'google-auth-library': 'commonjs google-auth-library',
+        'express': 'commonjs express'
+    },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
@@ -70,9 +75,6 @@ if (process.env.NODE_ENV === 'production') {
     module.exports.devtool = '#source-map';
     module.exports.target = 'electron-renderer';
     module.exports.plugins = (module.exports.plugins || []).concat([
-        // new webpack.DefinePlugin({
-        //     "process.env.NODE_ENV": '"production"'
-        // }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
         }),
