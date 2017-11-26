@@ -2,6 +2,8 @@
     "@case:views.view": {
         "explorer": {
             "@key": {
+                "ctrl+pageup": ["explorer.previousFolder"],
+                "ctrl+pagedown": ["explorer.nextFolder"],
                 "pageup": ["explorer.arrow", "pageup"],
                 "pagedown": ["explorer.arrow", "pagedown"],
                 "home": ["explorer.arrow", "home"],

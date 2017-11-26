@@ -2,6 +2,12 @@
     <ai-col>
         <ai-col class="box margin dark">
             <ai-row size="36">
+                <ai-button path="explorer.previousFolder"
+                           icon="" />
+                <ai-vr/>
+                <ai-button path="explorer.nextFolder"
+                           icon="" />
+                <ai-line/>
                 <ai-button path="explorer.goToReader"
                            icon=""
                            text="Đọc thư mục" />
