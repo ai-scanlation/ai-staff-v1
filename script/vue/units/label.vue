@@ -38,6 +38,9 @@ export default {
             '[size="#{$size}"] .label': [
                 'padding: 0 #{$size * $dpi *0.3}px'
             ],
+            '[size="#{$size}"] .label.square > .text': [
+                'width: #{$size * $dpi}px'
+            ],
             '[size="#{$size}"] .label > .text': [
                 'height: #{$size * $dpi}px',
                 'line-height: #{$size * $dpi }px',
@@ -54,5 +57,4 @@ export default {
         complier(this, 'text', 'compiledText', 'watchersText', this.root, true);
     }
 };
-
 </script>

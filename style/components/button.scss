@@ -24,6 +24,12 @@
 
 .label {
     cursor: default;
+    &.square {
+        padding: 0!important;
+        >.text {
+            text-align: center;
+        }
+    }
     &.hover:hover {
         background-color: rgba(0, 0, 0, 0.2);
     }
