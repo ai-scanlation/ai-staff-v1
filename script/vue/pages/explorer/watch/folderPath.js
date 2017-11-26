@@ -8,9 +8,9 @@ module.exports = function folderPath(value) {
             this.renameProjectID = project[0];
         }
     });
-    const renameNumber = /chap ([\d\.]+)/.exec(value);
-    if (renameNumber) {
-        this.renameNumber = renameNumber[1];
+    const renameChapterID = /(chap|chương|chuong) ([\d\.]+)/i.exec(value);
+    if (renameChapterID) {
+        this.renameChapterID = renameChapterID[2];
     }
     this.explorer();
 };

@@ -11,11 +11,11 @@ module.exports = function updateRename() {
     files.filter((file) => {
         return file[0].count !== 0;
     }).forEach((file, index, filesArray) => {
-        file[0].renameIndex = 0;
-        if (index === 0) file[0].renameIndex = 0;
+        file[0].renamePageID = 0;
+        if (index === 0) file[0].renamePageID = 0;
         else {
-            file[0].renameIndex
-                = filesArray[index - 1][0].renameIndex
+            file[0].renamePageID
+                = filesArray[index - 1][0].renamePageID
                 + filesArray[index - 1][0].count;
         }
         Vue.set(file[7], 'name', patternToName(renamePattern, file));

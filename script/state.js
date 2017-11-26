@@ -14,9 +14,10 @@ module.exports = {
 
         renamePattern: '[Ai Scans] Shiki Chap <15> - <0+><ext>',
         renameProjectID: 1,
-        renameNumber: 1,
-        renameNumberString: '001',
-        renameIndex: 1,
+        renameProjectIDString: '00',
+        renameChapterID: 1,
+        renameChapterIDString: '001',
+        renamePageID: 1,
 
         convertExtensionID: 0,
         convertWidthID: 1,

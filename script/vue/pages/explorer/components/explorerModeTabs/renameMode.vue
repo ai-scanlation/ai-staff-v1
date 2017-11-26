@@ -14,7 +14,7 @@
                     <ai-vr/>
                     <ai-button icon=""
                                path="explorer.renamePattern"
-                               value="[Ai Scans] <#{explorer.renameProjectID}> - Chap <{explorer.renameNumber}> - <{explorer.renameIndex}+><ext>" />
+                               value="[Ai Scans] <#{explorer.renameProjectID}> - Chap <{explorer.renameChapterID}> - <{explorer.renamePageID}+><ext>" />
                     <ai-input path="explorer.renamePattern"
                               class="full pre"
                               placeholder="Rename Pattern" />
@@ -27,13 +27,13 @@
                               class="full"
                               inputClass="square" />
                     <ai-line/>
-                    <ai-array pathID="explorer.renameNumber"
+                    <ai-array pathID="explorer.renameChapterID"
                               class="reverse"
                               max="999"
                               text="Chương"
                               inputClass="square" />
                     <ai-line/>
-                    <ai-array pathID="explorer.renameIndex"
+                    <ai-array pathID="explorer.renamePageID"
                               class="reverse"
                               max="999"
                               text="Bắt đầu từ"

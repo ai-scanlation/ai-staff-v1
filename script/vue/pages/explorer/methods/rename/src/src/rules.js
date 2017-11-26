@@ -23,7 +23,7 @@ module.exports = {
         return name.replace(/<(\d+)\+>/g, function(match, number) {
             const result = [];
             for (let i = 0; i < file[0].count; i++) {
-                result.push(toNumber(Number(number) + file[0].renameIndex + i));
+                result.push(toNumber(Number(number) + file[0].renamePageID + i));
             }
             return result.join('-');
         });

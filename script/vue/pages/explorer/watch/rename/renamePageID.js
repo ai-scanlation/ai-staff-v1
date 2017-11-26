@@ -1,7 +1,7 @@
-module.exports = function renameIndex(value) {
+module.exports = function renamePageID(value) {
     if (/(\d)+/.test(value)) {
         this.renamePattern = this.renamePattern.replace(/<(\d+)\+>/g, `<${value}+>`);
     } else {
-        this.renameIndex = 1;
+        this.renamePageID = 1;
     }
 };
