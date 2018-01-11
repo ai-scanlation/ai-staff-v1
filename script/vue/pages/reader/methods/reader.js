@@ -7,8 +7,8 @@ import {
 module.exports = function reader() {
     this.imgs = [];
     fs.readdir(this.folderPath, (err, files) => {
-        if (err) throw err;
-        this.imgs = files
+        if (err) console.log('Không thể đọc thư mục', err);
+        else this.imgs = files
             .filter((file) => (/(png|psd|jpg|jpeg)$/.test(file)))
             .sort(sort)
             .map((file, index) => ({

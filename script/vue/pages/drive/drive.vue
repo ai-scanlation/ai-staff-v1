@@ -2,7 +2,7 @@
     <ai-col class="scroll">
         <ai-col class="box margin padding dark">
             <ai-paragraph>
-                <h5>Danh sách các Project của nhóm</h5>
+                <h5>Tài khoản Google</h5>
                 <ai-space/>
                 <ai-border size="40">
                     <ai-row>

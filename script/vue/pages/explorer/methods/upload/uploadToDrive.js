@@ -10,83 +10,12 @@ import {
 import googleapis from 'googleapis';
 import queue from 'queue';
 
+import getNewFolderID from './api/getNewFolderID';
+import getFolderID from './api/getFolderID';
+import upload from './api/upload';
+import eachLocalFile from './api/eachLocalFile';
+
 let drive, $store;
-
-async function getNewFolderID(folderName, parentID) {
-    return new Promise(resolve => {
-        drive.files.create({
-            resource: {
-                name: folderName,
-                parents: [parentID],
-                mimeType: 'application/vnd.google-apps.folder'
-            }
-        }, (err, folder) => {
-            resolve(folder.id);
-        });
-    });
-}
-async function getFolderID(path, parentID = 'root') {
-    return new Promise(resolve => {
-        console.log(path, path.length);
-        if (path.length == 0) resolve(parentID);
-        else drive.files.list({
-            q: `'${parentID}' in parents and name = '${path[0]}' and trashed = false`
-        }, async function(err, response) {
-            if (response.files.length > 1) throw 'Có nhiều hơn 1 thư mục';
-            const folder_id = response.files.length == 0
-                ? await getNewFolderID(path[0], parentID)
-                : response.files[0].id;
-            path.shift();
-            resolve(await getFolderID(path, folder_id));
-        });
-    });
-}
-
-async function upload(localFile, folderID) {
-    return new Promise(resolve => {
-        drive.files.create({
-            resource: {
-                name: localFile[2].name,
-                parents: [folderID]
-            },
-            media: {
-                body: fs.createReadStream(localFile[0].path, parent)
-            },
-            fields: 'thumbnailLink'
-        }, (err, cloudFile) => {
-            if (err) {
-                console.error('Lỗi: ' + localFile[2].name + ' - Đang thử lại');
-                resolve(undefined);
-            } else {
-                resolve(cloudFile);
-            }
-        });
-    });
-}
-
-async function eachLocalFile(localFile, folderID) {
-    return new Promise(async resolve => {
-        let cloudFile = undefined;
-        let loop = 0;
-        while (!cloudFile && loop <= 5) {
-            loop++;
-            console.log(`Đang tải lên(${loop}): ${localFile[2].name}`);
-            cloudFile = await upload(localFile, folderID);
-        }
-        if (loop == 5) resolve(true);
-        else {
-            Vue.set(localFile[2], 'done', true);
-            $store.commit('push', {
-                path: 'google.upload.cloudFiles',
-                value: {
-                    name: localFile[2].name,
-                    url: cloudFile.thumbnailLink.replace(/\d+$/, '0')
-                }
-            });
-            resolve(true);
-        }
-    });
-}
 
 module.exports = async function uploadToDrive() {
     $store = this.$store;
@@ -95,7 +24,7 @@ module.exports = async function uploadToDrive() {
         auth: google().getOauth2Client()
     });
     const localFiles = find('explorer').getFiles().filter(
-        (localFile) => (/(png|jpg|jpeg)$/.test(localFile[2].name))
+        localFile => /(png|jpg|jpeg)$/.test(localFile[2].name)
     );
     $store.commit('set', {
         path: 'google.upload.localFiles',
