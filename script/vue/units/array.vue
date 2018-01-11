@@ -24,6 +24,18 @@ import {
     focus
 } from 'modules';
 
+/**
+ * <Array>
+ * Cách dùng:
+ *   + Path: [Đường dẫn] trỏ đến mảng chứa các chuỗi
+ *   + PathID: [Đường dẫn] trỏ đến biến chứa id trong mảng
+ *       Bản thân component này sẽ chỉ set giá trị này dựa vào Path[PathID]
+ *       Không có chiều ngược lại
+ * 
+ * Một vài chú thích cần nhớ:
+ *   + Giá trị index trong data là thuộc tính để tiện việc cho 
+ *     <label> dễ lấy giá trị thông qua chuỗi {array.value}
+ */
 export default {
     name: 'array',
     components: {
