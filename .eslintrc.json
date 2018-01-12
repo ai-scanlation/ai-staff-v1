@@ -5,6 +5,7 @@
         "es6": true
     },
     "extends": [
+        "eslint:recommended",
         "plugin:vue/recommended"
     ],
     "parserOptions": {
@@ -19,6 +20,12 @@
         "vue"
     ],
     "rules": {
+        "vue/html-indent": ["error", "number", {
+            "attribute": 1,
+            "closeBracket": 0,
+            "alignAttributesVertically": true,
+            "ignores": []
+        }],
         "indent": [
             "warn",
             4, {
