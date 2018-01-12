@@ -2,11 +2,11 @@
     <div id="app"
          class="col">
         <ai-header/>
-        <main class="row full">
+        <!-- <main class="row full">
             <ai-sidebar/>
             <ai-views id="views"
                       ref="views" />
-        </main>
+        </main> -->
     </div>
 </template>
 <script>
@@ -16,7 +16,7 @@ import {
 } from 'modules';
 
 export default {
-    name: 'app',
+    name: 'App',
     components: {
         ...load('app/layouts')
     },
@@ -30,6 +30,12 @@ export default {
             ]
         }
     },
+    mounted() {
+        style.set(this, {
+            dpi: window.devicePixelRatio,
+            size: 36
+        });
+    },
     methods: {
         key(value) {
             const [event, key] = value.split('.');
@@ -39,13 +45,6 @@ export default {
                 this.$el.classList.remove(key);
             }
         }
-    },
-    mounted() {
-        style.set(this, {
-            dpi: window.devicePixelRatio,
-            size: 36
-        });
     }
 };
-
 </script>

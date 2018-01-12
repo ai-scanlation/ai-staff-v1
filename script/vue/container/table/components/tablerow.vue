@@ -8,11 +8,15 @@ import {
     load
 } from 'modules';
 export default {
-    name: 'tablerow',
-    props: ['data'],
+    name: 'TableRow',
     components: {
         ...load('container/row')
-    }
+    },
+    props: {
+        data: {
+            type: Object,
+            default: undefined
+        }
+    },
 };
-
 </script>

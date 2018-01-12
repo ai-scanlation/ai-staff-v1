@@ -9,13 +9,12 @@ import router from './router';
 import store from './store';
 
 new Vue({
-    el: '#app',
     router,
     store,
+    created: function() {
+        key();
+    },
     render: h => h(app, {
         ref: 'app'
     }),
-    created: function() {
-        key();
-    }
-});
+}).$mount('#app');

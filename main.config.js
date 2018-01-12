@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: ['babel-polyfill', './script/index.js'],
@@ -32,20 +33,10 @@ module.exports = {
             use: 'json-loader'
         }]
     },
-    // watchOptions: {
-    //     poll: true
-    // },
     plugins: [
-        // new webpack.DefinePlugin({
-        //     "process.env": {
-        //         NODE_ENV: '"development"'
-        //     }
-        // }),
-
-        // new webpack.NamedModulesPlugin(),
+        new HtmlWebpackPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         // new webpack.HotModuleReplacementPlugin(),
-        // new webpack.NoErrorsPlugin(),
-        // new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin()
     ],
     output: {
@@ -54,15 +45,12 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     externals: {
-        'googleapis': 'commonjs googleapis',
-        'google-auth-library': 'commonjs google-auth-library',
-        'express': 'commonjs express'
+        'googleapis': 'commonjs2 googleapis',
+        'google-auth-library': 'commonjs2 google-auth-library',
+        'express': 'commonjs2 express'
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
-        alias: {
-            'components': path.join(__dirname, 'app/src/renderer/components')
-        },
         modules: [
             path.join(__dirname, 'node_modules'),
             path.resolve(__dirname, 'script/modules')

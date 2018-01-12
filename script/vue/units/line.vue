@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name: 'line'
+    name: 'Line'
 };
 
 </script>

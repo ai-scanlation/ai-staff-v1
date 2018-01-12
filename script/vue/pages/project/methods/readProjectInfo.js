@@ -1,8 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import {
-    find
-} from 'modules';
 import dic from '../src/projectStatusDictionary';
 
 module.exports = function(projectFolder) {

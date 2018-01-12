@@ -15,7 +15,7 @@ import {
     style
 } from 'modules';
 export default {
-    name: 'border',
+    name: 'Border',
     components: {
         ...load('container/col'),
         ...load('container/row'),

@@ -1,4 +1,6 @@
-async function upload(localFile, folderID) {
+import fs from 'fs';
+
+module.exports = async function upload(localFile, folderID, drive) {
     return new Promise(resolve => {
         drive.files.create({
             resource: {
@@ -18,4 +20,4 @@ async function upload(localFile, folderID) {
             }
         });
     });
-}
+};

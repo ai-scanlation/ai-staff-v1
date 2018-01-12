@@ -10,12 +10,12 @@ module.exports = {
         return name.replace(/<name>/g, path.basename(file[2].name, path.extname(file[2].name)));
     },
     project(name) {
-        return name.replace(/<#([\d\.]+)>/g, function(match, index) {
+        return name.replace(/<#([\d.]+)>/g, function(match, index) {
             return find('project').project[index][1];
         });
     },
     number(name) {
-        return name.replace(/<([\d\.]+)>/g, function(match, number) {
+        return name.replace(/<([\d.]+)>/g, function(match, number) {
             return toNumber(number);
         });
     },

@@ -13,17 +13,24 @@ import {
 } from 'modules';
 
 export default {
-    name: 'label',
+    name: 'Label',
     components: {
         ...load('container/row'),
         ...load('units/br')
     },
     props: {
         text: {
+            type: String,
             default: ''
         },
-        index: {},
-        root: {}
+        index: {
+            type: String,
+            default: ''
+        },
+        root: {
+            type: String,
+            default: ''
+        }
     },
     data() {
         return {

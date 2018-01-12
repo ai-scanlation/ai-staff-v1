@@ -6,17 +6,34 @@ import {
 } from 'modules';
 
 export default {
-    name: 'table',
+    name: 'Table',
     components: {
         ...load('container/table/components'),
         ...load('container'),
         ...load('units')
     },
-    props: ['data', 'config', 'mode', 'selection'],
+    props: {
+        data: {
+            type: Object,
+            default: undefined
+        },
+        config: {
+            type: Object,
+            default: undefined
+        },
+        mode: {
+            type: String,
+            default: ''
+        },
+        selection: {
+            type: Boolean,
+            default: true
+        }
+    },
     data: () => ({
         selectionIndex: 0
     }),
-    render: require('./tableRender'),
+    watch: include(require.context('./watch/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
     mounted() {
         style.set(this, {
             size: style.get('size', this, 24),
@@ -32,6 +49,8 @@ export default {
     updated() {
         console.time('table[' + this._uid + ']' + this.time);
     },
+    methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
+    render: require('./tableRender'),
     style: {
         group: 'default',
         overwrite: false,
@@ -47,8 +66,5 @@ export default {
             ]
         }
     },
-    watch: include(require.context('./watch/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
-    methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/)
 };
-
 </script>

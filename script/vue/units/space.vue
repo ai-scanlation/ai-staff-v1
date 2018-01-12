@@ -5,7 +5,6 @@
 </template>
 <script>
 export default {
-    name: 'space'
+    name: 'Space'
 };
-
 </script>

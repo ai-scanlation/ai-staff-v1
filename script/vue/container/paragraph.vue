@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name: 'paragraph',
+    name: 'Paragraph',
     data() {
         return {
             childSize: this.$parent.childSize !== undefined ? this.$parent.childSize : undefined

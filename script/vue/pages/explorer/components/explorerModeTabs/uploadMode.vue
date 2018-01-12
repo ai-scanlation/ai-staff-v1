@@ -6,7 +6,7 @@
                        icon="">
                 <span class="slot"
                       style="padding-left: 0">
-                    Tải lên <br/> Google Drive
+                    Tải lên <br> Google Drive
                 </span>
             </ai-button>
             <ai-line/>
@@ -25,8 +25,8 @@
                         <div class="percent"
                              :style="{ 
                                  width: ($store.state.google.upload.cloudFiles.length) /
-                                        ($store.state.google.upload.localFiles.length || 1) * 100 + '%' 
-                             }" />
+                                     ($store.state.google.upload.localFiles.length || 1) * 100 + '%' 
+                        }" />
                     </ai-button>
                 </ai-row>
             </ai-col>
@@ -58,7 +58,7 @@ import {
     load
 } from 'modules';
 export default {
-    name: 'uploadMode',
+    name: 'UploadMode',
     description: 'Tải lên',
     components: {
         ...load('container'),

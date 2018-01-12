@@ -1,6 +1,6 @@
 <template>
     <span class="url"
-          v-on:click="openUrl">
+          @click="openUrl">
         <slot/>
     </span>
 </template>
@@ -9,9 +9,10 @@ import {
     find
 } from 'modules';
 export default {
-    name: 'url',
+    name: 'Url',
     props: {
         href: {
+            type: String,
             default: ''
         }
     },

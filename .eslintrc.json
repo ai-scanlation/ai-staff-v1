@@ -20,7 +20,14 @@
         "vue"
     ],
     "rules": {
-        "vue/html-indent": ["error", "number", {
+        "vue/max-attributes-per-line": [2, {
+            "singleline": 1,
+            "multiline": {
+                "max": 1,
+                "allowFirstLine": true
+            }
+        }],
+        "vue/html-indent": ["error", 4, {
             "attribute": 1,
             "closeBracket": 0,
             "alignAttributesVertically": true,

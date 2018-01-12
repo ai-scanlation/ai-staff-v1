@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name: 'view',
+    name: 'View',
     data() {
         return {
             isActive: ''

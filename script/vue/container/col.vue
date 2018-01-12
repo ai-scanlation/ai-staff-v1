@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name: 'col'
+    name: 'Col'
 };
 
 </script>

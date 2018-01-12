@@ -14,7 +14,7 @@ import {
     load
 } from 'modules';
 export default {
-    name: 'test',
+    name: 'Test',
     components: {
         ...load('pages/test/components'),
         ...load('container'),

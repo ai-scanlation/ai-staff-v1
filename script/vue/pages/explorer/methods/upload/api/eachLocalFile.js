@@ -1,4 +1,7 @@
-async function eachLocalFile(localFile, folderID) {
+import upload from './upload';
+import Vue from 'vue';
+const $store = {};
+module.exports = async function eachLocalFile(localFile, folderID) {
     return new Promise(async resolve => {
         let cloudFile = undefined;
         let loop = 0;
@@ -20,4 +23,4 @@ async function eachLocalFile(localFile, folderID) {
             resolve(true);
         }
     });
-}
+};

@@ -1,11 +1,9 @@
-import path from 'path';
 import {
-    find,
-    shell
+    find
 } from 'modules';
 
 // TODO: Complete this
-module.exports = function key(keyname) {
+module.exports = function key() {
     const file = find(`tablerow[row-${this.selectionIndex}]`);
     if (!file) return;
     // if (this.mode === "explorerMode") {

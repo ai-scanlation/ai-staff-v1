@@ -115,7 +115,7 @@ import {
 } from 'modules';
 
 export default {
-    name: 'reader',
+    name: 'Reader',
     components: {
         ...load('container'),
         ...load('units'),
@@ -131,6 +131,12 @@ export default {
         transcript: '',
         show: 'all'
     }),
+    watch: {
+        folderPath(folderPath) {
+            this.folderName = path.basename(folderPath);
+            this.reader();
+        }
+    },
     mounted() {
         save(this, [
             'folderPath',
@@ -139,13 +145,6 @@ export default {
             'transcript'
         ]);
     },
-    methods: include(require.context('./methods/', false, /[^/]+\.js$/)),
-    watch: {
-        folderPath(folderPath) {
-            this.folderName = path.basename(folderPath);
-            this.reader();
-        }
-    }
+    methods: include(require.context('./methods/', false, /[^/]+\.js$/))
 };
-
 </script>

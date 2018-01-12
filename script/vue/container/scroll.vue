@@ -9,9 +9,10 @@ import {
     run
 } from 'modules';
 export default {
-    name: 'scroll',
+    name: 'Scroll',
     props: {
         path: {
+            type: String,
             default: ''
         }
     },
@@ -23,5 +24,4 @@ export default {
         });
     }
 };
-
 </script>

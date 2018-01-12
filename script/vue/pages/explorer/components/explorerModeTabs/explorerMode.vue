@@ -45,7 +45,7 @@ import {
     load
 } from 'modules';
 export default {
-    name: 'explorerMode',
+    name: 'ExplorerMode',
     description: 'Duyệt tập tin',
     components: {
         ...load('container'),

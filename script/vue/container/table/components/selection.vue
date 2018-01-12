@@ -6,7 +6,7 @@ import {
     style
 } from 'modules';
 export default {
-    name: 'selection',
+    name: 'Selection',
     style: {
         group: 'default',
         overwrite: false,

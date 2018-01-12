@@ -1,7 +1,7 @@
 <template>
     <ai-row class="button"
             :class="{ active: isActive }"
-            v-on:click.native="buttonClick()">
+            @click.native="buttonClick()">
         <span class="icon"
               v-if="icon !== ''">{{ icon }}</span>
         <div class="br"
@@ -23,25 +23,30 @@ import {
 } from 'modules';
 
 export default {
-    name: 'button',
+    name: 'Button',
     components: {
         ...load('container/row'),
         ...load('units/br')
     },
     props: {
         path: {
+            type: String,
             default: ''
         },
         value: {
+            type: String,
             default: ''
         },
         text: {
+            type: String,
             default: ''
         },
         icon: {
+            type: String,
             default: ''
         },
         root: {
+            type: Object,
             default: undefined
         }
     },
@@ -83,23 +88,6 @@ export default {
             buttonClick: () => {}
         };
     },
-    methods: {
-        updateIsActive(valueInPath) {
-            if (!this.compiledValue) {
-                this.isActive = false;
-            } else {
-                if (this.compiledValue[0] === '@') {
-                    if (this.compiledValue === '@') {
-                        this.isActive = valueInPath;
-                    } else {
-                        this.isActive = valueInPath === this.compiledValue.substr(1);
-                    }
-                } else {
-                    this.isActive = valueInPath === this.compiledValue && this.compiledValue !== '';
-                }
-            }
-        }
-    },
     mounted() {
         style.set(this, {
             size: style.get('size', this, 40),
@@ -135,6 +123,23 @@ export default {
             }
         } else {
             // console.log(this.$el);
+        }
+    },
+    methods: {
+        updateIsActive(valueInPath) {
+            if (!this.compiledValue) {
+                this.isActive = false;
+            } else {
+                if (this.compiledValue[0] === '@') {
+                    if (this.compiledValue === '@') {
+                        this.isActive = valueInPath;
+                    } else {
+                        this.isActive = valueInPath === this.compiledValue.substr(1);
+                    }
+                } else {
+                    this.isActive = valueInPath === this.compiledValue && this.compiledValue !== '';
+                }
+            }
         }
     }
 };

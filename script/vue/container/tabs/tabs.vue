@@ -4,8 +4,17 @@ import {
     include
 } from 'modules';
 export default {
-    name: 'tabs',
-    props: ['tabs', 'tabName', 'noChangeParent'],
+    name: 'Tabs',
+    props: {
+        tabs: {
+            type: String,
+            default: ''
+        },
+        tabName: {
+            type: String,
+            default: ''
+        }
+    },
     style: {
         group: 'default',
         overwrite: true,
@@ -15,18 +24,11 @@ export default {
             ]
         }
     },
-    render: require('./tabsRender'),
     data() {
         return {
             description: '',
             parentTab: this.$parent
         };
-    },
-    created() {
-        while (this.parentTab) {
-            if (this.parentTab.$options.name === 'tabs') break;
-            this.parentTab = this.parentTab.$parent;
-        }
     },
     mounted() {
         find(this.tabName, (parent, property) => {
@@ -36,6 +38,13 @@ export default {
             this.updateActive(parent[property]);
         });
     },
-    methods: include(require.context('./methods/', true, /[^\/]+\.js$/), 1, 4, 'js', /src/),
+    created() {
+        while (this.parentTab) {
+            if (this.parentTab.$options.name === 'tabs') break;
+            this.parentTab = this.parentTab.$parent;
+        }
+    },
+    methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
+    render: require('./tabsRender')
 };
 </script>

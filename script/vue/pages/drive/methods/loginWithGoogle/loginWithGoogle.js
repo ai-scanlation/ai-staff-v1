@@ -1,7 +1,7 @@
 import childProcess from 'child_process';
 import expressServerText from 'raw-loader!./src/expressServer';
 import fs from 'fs';
-import googleapis from 'googleapis';
+// import googleapis from 'googleapis';
 import {
     google
 } from 'modules';
@@ -65,17 +65,17 @@ async function storeToken(token) {
 }
 
 function getMail() {
-    googleapis.plus('v1').people.get({
-        auth: oauth2Client,
-        userId: 'me',
-        fields: 'emails'
-    }, (err, res) => {
-        if (err) throw err;
-        module.$store.commit('set', {
-            path: 'google.email',
-            value: res.emails[0].value
-        });
-    });
+    // googleapis.plus('v1').people.get({
+    //     auth: oauth2Client,
+    //     userId: 'me',
+    //     fields: 'emails'
+    // }, (err, res) => {
+    //     if (err) throw err;
+    //     module.$store.commit('set', {
+    //         path: 'google.email',
+    //         value: res.emails[0].value
+    //     });
+    // });
 }
 module.exports = async function() {
     module.$store = this.$store;

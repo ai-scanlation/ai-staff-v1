@@ -37,27 +37,48 @@ import {
  *     <label> dễ lấy giá trị thông qua chuỗi {array.value}
  */
 export default {
-    name: 'array',
+    name: 'Array',
     components: {
         ...load('container'),
         ...load('units')
     },
     props: {
         'text': {
+            type: String,
             default: '{array.value}'
         },
         'action': {
+            type: String,
             default: 'focus'
         },
         'toggleWay': {
+            type: String,
             default: 'up'
         },
-        'path': {},
-        'pathIndex': {},
-        'pathID': {},
-        'min': {},
-        'max': {},
-        'inputClass': {}
+        'path': {
+            type: String,
+            default: ''
+        },
+        'pathIndex': {
+            type: Number,
+            default: 0
+        },
+        'pathID': {
+            type: String,
+            default: ''
+        },
+        'min': {
+            type: Number,
+            default: 0
+        },
+        'max': {
+            type: Number,
+            default: 10
+        },
+        'inputClass': {
+            type: String,
+            default: ''
+        }
     },
     data: () => ({
         index: 0,
@@ -65,24 +86,6 @@ export default {
         maxValue: 10,
         value: '<Chưa định nghĩa>'
     }),
-    methods: {
-        updateValue(value) {
-            if (value !== undefined && value[this.index] !== undefined) {
-                this.value = (this.pathIndex && value[this.index][this.pathIndex])
-                    ? value[this.index][this.pathIndex]
-                    : value[this.index];
-                this.maxValue = value.length - 1;
-            }
-        },
-        click() {
-            if (this.action.split(' ').indexOf('focus') !== -1) {
-                focus(['input', this]);
-            }
-            if (this.action.split(' ').indexOf('toggle') !== -1) {
-                this.$emit('toggle', this.toggleWay);
-            }
-        }
-    },
     mounted() {
         find(this.path, (parent, property) => {
             parent.$watch(property, (value) => {
@@ -110,6 +113,24 @@ export default {
             });
             this.index = parent[property];
         });
+    },
+    methods: {
+        updateValue(value) {
+            if (value !== undefined && value[this.index] !== undefined) {
+                this.value = (this.pathIndex && value[this.index][this.pathIndex])
+                    ? value[this.index][this.pathIndex]
+                    : value[this.index];
+                this.maxValue = value.length - 1;
+            }
+        },
+        click() {
+            if (this.action.split(' ').indexOf('focus') !== -1) {
+                focus(['input', this]);
+            }
+            if (this.action.split(' ').indexOf('toggle') !== -1) {
+                this.$emit('toggle', this.toggleWay);
+            }
+        }
     }
 };
 </script>

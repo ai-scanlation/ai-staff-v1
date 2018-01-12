@@ -10,7 +10,7 @@
                                    icon="">
                             <span class="slot"
                                   style="padding-left: 0">
-                                Nạp mã <br/> bí mật
+                                Nạp mã <br> bí mật
                             </span>
                         </ai-button>
                         <ai-line/>
@@ -33,7 +33,7 @@
                                    path="drive.loginWithGoogle">
                             <span class="slot"
                                   style="padding-left: 0">
-                                Đăng nhập <br/> tài khoản Google 
+                                Đăng nhập <br> tài khoản Google 
                             </span>
                         </ai-button>
                     </ai-row>
@@ -59,8 +59,8 @@
                                    icon="">
                             <span class="slot"
                                   style="padding-left: 0">
-                                    Hủy cấp phép <br/> {{$store.state.google.email}}
-                                </span>
+                                Hủy cấp phép <br> {{ $store.state.google.email }}
+                            </span>
                         </ai-button>
                     </ai-row>
                 </ai-border>
@@ -79,7 +79,7 @@ import moment from 'moment';
 moment.locale('vi');
 
 export default {
-    name: 'drive',
+    name: 'Drive',
     components: {
         ...load('container'),
         ...load('units')
@@ -87,12 +87,12 @@ export default {
     computed: {
         ...computed('picasa')
     },
-    methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
     mounted() {
         // setInterval(() => {
         //     const time = moment(this.accessTokenExpires).format('X') - moment().format('X');
         //     this.accessTokenExpiresString = time > 0 ?  `Còn ${time} giây` : 'Hết hạn';
         // }, 1000);
-    }
+    },
+    methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/)
 };
 </script>

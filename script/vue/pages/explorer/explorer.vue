@@ -19,14 +19,14 @@
                 <ai-button path="explorer.ctrl+enter"
                            text="Mở trong photoshop"
                            value="@" />
-                <div class="full"></div>
+                <div class="full" />
                 <ai-button path="tabs[explorer-explorerMode].toggleMode">
                     <ai-label text="{tabs[explorer-explorerMode].description} [F12]" />
                 </ai-button>
             </ai-row>
             <ai-line/>
             <ai-tabs tabs="pages/explorer/components/explorerModeTabs"
-                     tabName="explorer.explorerMode"
+                     tab-name="explorer.explorerMode"
                      ref="explorer-explorerMode" />
             <ai-line/>
             <ai-row size="36">
@@ -78,7 +78,7 @@ import {
 } from 'modules';
 
 export default {
-    name: 'explorer',
+    name: 'Explorer',
     components: {
         ...load('container'),
         ...load('units')
@@ -92,16 +92,16 @@ export default {
             ...include(require.context('./data/', false, /[^/]+\.js$/), 1, 1)
         };
     },
-    mounted() {
-        this.explorer();
-    },
     computed: {
         saveFolderPath() {
             return this.folderPath.replace(/(1 - RAW|2 - ENG|3 - Trans|4 - PSD|5 - PNG).*$/, '5 - PNG');
         },
         ...computed('explorer')
     },
+    watch: include(require.context('./watch/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
+    mounted() {
+        this.explorer();
+    },
     methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
-    watch: include(require.context('./watch/', true, /[^/]+\.js$/), 1, 4, 'js', /src/)
 };
 </script>

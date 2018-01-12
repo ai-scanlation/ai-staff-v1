@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name: 'scroll'
+    name: 'Scroll'
 };
 
 </script>

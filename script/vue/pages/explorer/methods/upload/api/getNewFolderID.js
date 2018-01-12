@@ -1,3 +1,4 @@
+const drive = {};
 module.exports = async function getNewFolderID(folderName, parentID) {
     return new Promise(resolve => {
         drive.files.create({

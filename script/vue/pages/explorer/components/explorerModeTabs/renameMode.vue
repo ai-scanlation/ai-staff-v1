@@ -22,22 +22,22 @@
                 <ai-line/>
                 <ai-row>
                     <ai-array path="project.project"
-                              pathIndex="2"
-                              pathID="explorer.renameProjectID"
+                              path-index="2"
+                              path-id="explorer.renameProjectID"
                               class="full"
-                              inputClass="square" />
+                              input-class="square" />
                     <ai-line/>
-                    <ai-array pathID="explorer.renameChapterID"
+                    <ai-array path-id="explorer.renameChapterID"
                               class="reverse"
                               max="999"
                               text="Chương"
-                              inputClass="square" />
+                              input-class="square" />
                     <ai-line/>
-                    <ai-array pathID="explorer.renamePageID"
+                    <ai-array path-id="explorer.renamePageID"
                               class="reverse"
                               max="999"
                               text="Bắt đầu từ"
-                              inputClass="square" />
+                              input-class="square" />
                 </ai-row>
             </ai-col>
         </ai-row>
@@ -48,7 +48,7 @@ import {
     load
 } from 'modules';
 export default {
-    name: 'renameMode',
+    name: 'RenameMode',
     description: 'Đổi tên',
     components: {
         ...load('container'),
@@ -59,7 +59,6 @@ export default {
             isActive: false,
         };
     },
-    mounted() {
-    }
+    mounted() {}
 };
 </script>

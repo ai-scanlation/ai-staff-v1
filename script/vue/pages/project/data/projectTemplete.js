@@ -1,7 +1,3 @@
-import {
-    find
-} from 'modules';
-
 module.exports = {
     type: 'table',
     scroll: true,

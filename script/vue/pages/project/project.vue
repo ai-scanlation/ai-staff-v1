@@ -22,7 +22,7 @@ import {
 } from 'modules';
 
 export default {
-    name: 'project',
+    name: 'Project',
     components: {
         ...load('container'),
         ...load('units')

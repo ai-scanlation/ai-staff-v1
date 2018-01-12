@@ -5,8 +5,13 @@
 </template>
 <script>
 export default {
-    name: 'string',
-    props: ['value']
+    name: 'String',
+    props: {
+        value: {
+            type: String,
+            default: ''
+        }
+    }
 };
 
 </script>

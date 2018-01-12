@@ -6,17 +6,30 @@ import {
 } from 'modules';
 
 export default {
-    name: 'grid',
+    name: 'Grid',
     components: {
         // ...load("container/table/components"),
         ...load('container'),
         ...load('units')
     },
-    props: ['data', 'selection', 'show'],
+    props: {
+        data: {
+            type: Object,
+            default: undefined
+        },
+        selection: {
+            type: Boolean,
+            default: false
+        },
+        show: {
+            type: Boolean,
+            default: false
+        },
+    },
     data: () => ({
         selectionIndex: 0
     }),
-    render: require('./gridRender'),
+    watch: include(require.context('./watch/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
     mounted() {
         style.set(this, {
             size: style.get('size', this, 24),
@@ -24,6 +37,8 @@ export default {
         });
         this.updateStyle();
     },
+    methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
+    render: require('./gridRender'),
     style: {
         group: 'default',
         overwrite: false,
@@ -38,8 +53,6 @@ export default {
                 'padding: 0 #{0.3 * $size * $dpi}px'
             ]
         }
-    },
-    watch: include(require.context('./watch/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
-    methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/)
+    }
 };
 </script>

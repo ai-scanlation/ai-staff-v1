@@ -14,7 +14,7 @@ import {
     load
 } from 'modules';
 export default {
-    name: 'header',
+    name: 'Header',
     components: {
         ...load('container/row'),
         ...load('units')

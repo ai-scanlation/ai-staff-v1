@@ -5,7 +5,7 @@ import identifyType from './src/identifyType.js';
 import include from 'include.js';
 import complierString from '../../# components/complier/complierString';
 
-const extension = include(require.context('./src/extension', false, /[^\/]+\.js$/));
+const extension = include(require.context('./src/extension', false, /[^/]+\.js$/));
 
 const Q = queue();
 Q.concurrency = 1;

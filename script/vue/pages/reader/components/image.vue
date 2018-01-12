@@ -1,9 +1,9 @@
 <template>
-    <div v-if="this.img !== undefined"
+    <div v-if="img !== undefined"
          @mousedown="mousedown"
          @mousemove="mousemove"
          @mouseup="mouseup"
-         :class="{ loaded: this.img.loaded , redraw: /redraw[^\.]$/.test(this.img.name) }">
+         :class="{ loaded: img.loaded , redraw: /redraw[^\.]$/.test(img.name) }">
         <!-- 
             [top] raw - position: absolute
             [bot] all
@@ -15,8 +15,8 @@
              :src="raw">
         <div :shoot="shoot"
              :style="{ 
-            'max-width': naturalWidth + 'px',
-            'clip-path': `polygon(0 0, ${left}% ${top}%, ${right}% ${top}%, ${right}% ${bottom}%, ${left}% ${bottom}%,${left}% ${top}%, 0 0, 0 100%, 100% 100%, 100% 0)`
+                 'max-width': naturalWidth + 'px',
+                 'clip-path': `polygon(0 0, ${left}% ${top}%, ${right}% ${top}%, ${right}% ${bottom}%, ${left}% ${bottom}%,${left}% ${top}%, 0 0, 0 100%, 100% 100%, 100% 0)`
         }" />
     </div>
 </template>
@@ -35,11 +35,31 @@ import {
 } from 'electron';
 
 export default {
-    name: 'image',
+    name: 'Image',
     components: {
         ...load('units')
     },
-    props: ['img'],
+    props: {
+        img: {
+            type: Object,
+            default: undefined,
+        }
+    },
+    data: () => ({
+        raw: '',
+        all: '',
+        naturalWidth: 0,
+
+        shoot: 0,
+        top: 0,
+        left: 0,
+        right: 10,
+        bottom: 10
+    }),
+    mounted() {
+        this.img.component = this;
+        this.loadImage();
+    },
     methods: {
         mousedown(event) {
             const reader = find('reader');
@@ -185,22 +205,6 @@ export default {
             find('reader').updateScroll();
             this.naturalWidth = event.target.naturalWidth;
         }
-    },
-    data: () => ({
-        raw: '',
-        all: '',
-        naturalWidth: 0,
-
-        shoot: 0,
-        top: 0,
-        left: 0,
-        right: 10,
-        bottom: 10
-    }),
-    mounted() {
-        this.img.component = this;
-        this.loadImage();
     }
 };
-
 </script>

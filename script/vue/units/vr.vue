@@ -6,7 +6,7 @@ import {
     style
 } from 'modules';
 export default {
-    name: 'vr',
+    name: 'Vr',
     style: {
         group: 'default',
         overwrite: false,

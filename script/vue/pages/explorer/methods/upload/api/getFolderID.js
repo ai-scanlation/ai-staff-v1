@@ -1,5 +1,5 @@
 import getNewFolderID from './getNewFolderID';
-
+const drive = {};
 module.exports = async function getFolderID(path, parentID = 'root') {
     return new Promise(resolve => {
         console.log(path, path.length);

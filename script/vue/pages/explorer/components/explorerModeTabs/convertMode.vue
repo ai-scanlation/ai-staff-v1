@@ -5,7 +5,7 @@
             <ai-button path="explorer.convert"
                        style="padding: 0 10px">
                 <span class="slot">
-                    Lưu vào <br/> thư mục mới
+                    Lưu vào <br> thư mục mới
                 </span>
             </ai-button>
             <ai-line/>
@@ -29,39 +29,39 @@
                 <ai-line/>
                 <ai-row>
                     <ai-array path="project.project"
-                              pathIndex="2"
-                              pathID="explorer.renameProjectID"
+                              path-index="2"
+                              path-id="explorer.renameProjectID"
                               class="full"
-                              inputClass="square" />
+                              input-class="square" />
                     <ai-line/>
-                    <ai-array pathID="explorer.renameChapterID"
+                    <ai-array path-id="explorer.renameChapterID"
                               class="reverse"
                               max="999"
                               text="Chương"
-                              inputClass="square" />
+                              input-class="square" />
                     <ai-line/>
-                    <ai-array pathID="explorer.renamePageID"
+                    <ai-array path-id="explorer.renamePageID"
                               class="reverse"
                               max="999"
                               text="Bắt đầu từ"
-                              inputClass="square" />
+                              input-class="square" />
                 </ai-row>
             </ai-col>
         </ai-row>
         <ai-line/>
         <ai-row size="36">
             <ai-array path="explorer.allowConvertExtension"
-                      pathID="explorer.convertExtensionID"
+                      path-id="explorer.convertExtensionID"
                       action="toggle"
                       text="Định dạng: {array.value}"
                       style="width: 160px"
-                      inputClass="hide" />
+                      input-class="hide" />
             <ai-line/>
             <ai-array path="explorer.allowConvertWidth"
-                      pathID="explorer.convertWidthID"
+                      path-id="explorer.convertWidthID"
                       action="toggle"
                       text="Chiều rộng: {array.value}"
-                      inputClass="hide" />
+                      input-class="hide" />
             <ai-input path="explorer.customConvertWidth"
                       style="width: 70px"
                       type="number"
@@ -71,11 +71,11 @@
                       placeholder="số" />
             <ai-line/>
             <ai-array path="explorer.allowConvertInterpolate"
-                      pathID="explorer.convertInterpolateID"
+                      path-id="explorer.convertInterpolateID"
                       text="Nội suy: {array.value}"
                       action="toggle focus"
                       style="width: 280px"
-                      inputClass="square" />
+                      input-class="square" />
             <div class="full" />
         </ai-row>
         <ai-line/>
@@ -114,11 +114,10 @@
 </template>
 <script>
 import {
-    load,
-    find
+    load
 } from 'modules';
 export default {
-    name: 'convertMode',
+    name: 'ConvertMode',
     description: 'Đổi định dạng',
     components: {
         ...load('container'),

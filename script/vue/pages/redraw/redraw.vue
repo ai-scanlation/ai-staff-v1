@@ -6,7 +6,7 @@
             <ai-space/>
             <ai-border class="full">
                 <ai-row>
-                    <ai-button text="Bước 1: Khởi tạo"></ai-button>
+                    <ai-button text="Bước 1: Khởi tạo" />
                     <ai-line/>
                     <ai-col class="full">
                         <ai-button text="Nạp lại cơ sở dữ liệu" />
@@ -16,7 +16,7 @@
                 </ai-row>
                 <ai-line/>
                 <ai-row>
-                    <ai-button text="Bước 2: "></ai-button>
+                    <ai-button text="Bước 2: " />
                     <ai-line/>
                     <ai-col>
                         <ai-button text="Kiểm tra lại cơ sở dữ liệu" />
@@ -24,7 +24,9 @@
                     <ai-line/>
                 </ai-row>
                 <ai-row>
-                    <canvas id="canvas" width="500" height="500"></canvas>
+                    <canvas id="canvas"
+                            width="500"
+                            height="500" />
                 </ai-row>
             </ai-border>
         </ai-col>
@@ -38,7 +40,7 @@ import {
 } from 'modules';
 
 export default {
-    name: 'redraw',
+    name: 'Redraw',
     components: {
         ...load('container'),
         ...load('units')
@@ -58,5 +60,4 @@ export default {
     },
     methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/)
 };
-
 </script>

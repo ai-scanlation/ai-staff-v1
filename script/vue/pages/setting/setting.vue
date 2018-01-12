@@ -137,7 +137,7 @@ import {
 } from 'modules';
 
 export default {
-    name: 'setting',
+    name: 'Setting',
     components: {
         ...load('container'),
         ...load('units')
@@ -150,15 +150,14 @@ export default {
             imagemagickConcurrency: 1
         };
     },
-    watch: include(require.context('./watch/', true, /[^\/]+\.js$/), 1, 4, 'js', /src/),
-    methods: include(require.context('./methods/', true, /[^\/]+\.js$/), 1, 4, 'js', /src/),
+    watch: include(require.context('./watch/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
     mounted() {
         fs.readdir(this.imagemagickTemporaryFolder, (err, files) => {
             if (err) return;
             this.imagemagickTemporaryFolderLength = files.length;
         });
         save(this, ['imagemagick', 'imagemagickTemporaryFolder', 'imagemagickConcurrency']);
-    }
+    },
+    methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
 };
-
 </script>

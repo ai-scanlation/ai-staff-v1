@@ -8,7 +8,7 @@ import {
     style
 } from 'modules';
 export default {
-    name: 'row',
+    name: 'Row',
     style: {
         group: 'default',
         overwrite: false,

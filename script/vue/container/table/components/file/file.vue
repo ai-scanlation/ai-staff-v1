@@ -1,12 +1,12 @@
 <template>
     <ai-row class="cell"
-            :style="{ 'opacity':`${this.opacity}` }"
-            :error="this.value.error"
-            :done="this.value.done">
+            :style="{ 'opacity':`${opacity}` }"
+            :error="value.error"
+            :done="value.done">
         <div class="file-icon"
-             :style="{ 'background-image': `url(${this.src})` }" />
+             :style="{ 'background-image': `url(${src})` }" />
         <span>
-            {{ this.name }}
+            {{ name }}
         </span>
     </ai-row>
 </template>
@@ -20,17 +20,14 @@ import {
 } from 'modules';
 
 export default {
-    name: 'file',
+    name: 'File',
     components: {
         ...load('container/row')
     },
-    props: ['value'],
-    computed: {
-        src() {
-            return icon.extToFile(this.value.ext || path.extname(this.name));
-        },
-        name() {
-            return this.value.name || '';
+    props: {
+        value: {
+            default: undefined,
+            type: Object
         }
     },
     style: {
@@ -51,6 +48,14 @@ export default {
             count: undefined
         };
     },
+    computed: {
+        src() {
+            return icon.extToFile(this.value.ext || path.extname(this.name));
+        },
+        name() {
+            return this.value.name || '';
+        }
+    },
     mounted() {
         if (this.value.type === 'rename') {
             this.$parent.$parent.$watch('data', (data) => {
@@ -70,5 +75,4 @@ export default {
         });
     }
 };
-
 </script>
