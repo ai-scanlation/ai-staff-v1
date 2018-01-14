@@ -1,31 +1,33 @@
 {
     "name": "ai.staff",
-    "version": "2.0.1",
+    "version": "2.0.3",
     "description": "Ai Scanlation Tool for Staff",
     "author": "phamhongphuc <phamhongphuc.info@gmail.com>",
     "private": true,
     "scripts": {
-        "go": "electron-webpack dev",
-        "style": "scss --watch style/index.scss:dist/render.css",
-        "style-render": "scss --style compressed style/index.scss:dist/render.css",
-        "webpack": "webpack --watch",
-        "webpack-render": "webpack",
-        "electron": "electron .",
-        "electron-debug": "electron --debug-brk=5858 .",
-        "electron-render": "node renderer.js",
-        "dev": "cross-env NODE_ENV=development npm-run-all --parallel style webpack electron",
-        "debug": "cross-env NODE_ENV=development npm-run-all --parallel style webpack electron-debug",
-        "build": "cross-env NODE_ENV=production run-s style-render webpack-render",
-        "render": "cross-env NODE_ENV=production npm run electron-render"
+        "dev": "electron-webpack dev",
+        "compile": "electron-webpack",
+        "dist": "yarn compile && electron-builder",
+        "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
+        "_style": "scss --watch style/index.scss:dist/render.css",
+        "_style-render": "scss --style compressed style/index.scss:dist/render.css",
+        "_webpack": "webpack --watch",
+        "_webpack-render": "webpack",
+        "_electron": "electron .",
+        "_electron-debug": "electron --debug-brk=5858 .",
+        "_electron-render": "node renderer.js",
+        "_dev": "cross-env NODE_ENV=development npm-run-all --parallel style webpack electron",
+        "_debug": "cross-env NODE_ENV=development npm-run-all --parallel style webpack electron-debug",
+        "_build": "cross-env NODE_ENV=production run-s style-render webpack-render",
+        "_render": "cross-env NODE_ENV=production npm run electron-render"
     },
-    "main": "app/main.js",
     "electronWebpack": {
         "main": {
-            "sourceDirectory": "app"
+            "sourceDirectory": "src/main"
         },
         "renderer": {
-            "sourceDirectory": "script",
-            "webpackConfig": "main.config.js"
+            "webpackConfig": "src/renderer/index.config.js",
+            "sourceDirectory": "src/renderer"
         }
     },
     "dependencies": {
@@ -64,7 +66,7 @@
         "css-loader": "^0.28.8",
         "devtron": "^1.4.0",
         "electron": "^1.7.10",
-        "electron-builder": "^19.52.1",
+        "electron-builder": "^19.53.4",
         "electron-devtools-installer": "^2.2.3",
         "electron-packager": "^10.1.1",
         "electron-webpack": "^1.11.0",
@@ -86,6 +88,7 @@
         "source-map-support": "^0.5.0",
         "uglifyjs-webpack-plugin": "^1.1.6",
         "vue-hot-reload-api": "^2.1.0",
+        "vue-html-loader": "^1.2.4",
         "vue-loader": "^13.7.0",
         "vue-template-compiler": "^2.5.13",
         "webpack": "^3.10.0"

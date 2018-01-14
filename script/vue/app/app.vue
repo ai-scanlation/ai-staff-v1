@@ -2,11 +2,11 @@
     <div id="app"
          class="col">
         <ai-header/>
-        <!-- <main class="row full">
-            <ai-sidebar/>
-            <ai-views id="views"
-                      ref="views" />
-        </main> -->
+        <main class="row full">
+            <!-- <ai-sidebar/> -->
+            <!-- aa<ai-views id="views"
+                      ref="views" /> -->
+        </main>
     </div>
 </template>
 <script>
