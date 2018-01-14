@@ -1,40 +1,29 @@
-'use strict';
-
 import {
-    app,
     BrowserWindow
 } from 'electron';
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
-
-let main;
-
-function createMainWindow() {
+export default function createWindow(onClose = () => {}) {
     const window = new BrowserWindow({
         webPreferences: {
             experimentalFeatures: true
         },
-        width: 900,
-        height: 600,
+        width: 1100,
+        height: 700,
         'min-height': 300,
         'min-width': 300
     });
 
-    const url = isDevelopment
-        ? `http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`
-        : `file://${__dirname}/index.html`;
+    const url = process.env.NODE_ENV == 'production'
+        ? `file://${__dirname}/index.html`
+        : `http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`;
+
+    window.loadURL(url);
+    window.on('closed', onClose);
 
     window.webContents.openDevTools();
-    window.loadURL(url);
-    window.on('closed', function() {
-        main = null;
-    });
-
     window.webContents.on('devtools-opened', () => {
         window.focus();
-        setImmediate(() => {
-            window.focus();
-        });
+        setImmediate(() => window.focus());
     });
 
     // Install `vue-devtools`
@@ -52,15 +41,3 @@ function createMainWindow() {
 
     return window;
 }
-
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') app.quit();
-
-});
-app.on('activate', () => {
-    if (main === null) main = createMainWindow();
-});
-
-app.on('ready', () => {
-    main = createMainWindow();
-});
