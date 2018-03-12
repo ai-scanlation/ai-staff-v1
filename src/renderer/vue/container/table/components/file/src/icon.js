@@ -1,14 +1,10 @@
 const iconMap = require('./icon.json');
 export default {
-    extToFile: extToFile
+    fromExt
 };
 
-function extToFile(ext) {
-    ext = ext.toLowerCase();
-    const iconFile = iconMap[ext];
-    if (iconFile) {
-        return `./img/icons/${iconFile}.svg`;
-    } else {
-        return extToFile('file');
-    }
+function fromExt(ext) {
+    const lowerExt = ext.toLowerCase();
+    const iconFile = iconMap[lowerExt] || 'file';
+    return `./img/icons/${iconFile}.svg`;
 }

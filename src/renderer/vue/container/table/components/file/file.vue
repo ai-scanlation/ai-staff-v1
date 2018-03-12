@@ -51,7 +51,7 @@ export default {
     },
     computed: {
         src() {
-            return icon.extToFile(this.value.ext || path.extname(this.name));
+            return icon.fromExt(this.value.ext || path.extname(this.name));
         },
         name() {
             return this.value.name || '';
