@@ -1,0 +1,26 @@
+.tabs {
+    position: relative;
+    display: flex;
+    transition: all 0.3s;
+    overflow: hidden;
+    >.tab {
+        position: absolute;
+        width: 100%;
+        align-self: center;
+        z-index: 1;
+        &.top {
+            align-self: flex-start
+        }
+        &.center {
+            align-self: center;
+        }
+        &.bot {
+            align-self: flex-end;
+        }
+        &:not([active]) {
+            position: absolute;
+            z-index: 0;
+            opacity: 0
+        }
+    }
+}

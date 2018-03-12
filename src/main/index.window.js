@@ -2,42 +2,41 @@ import {
     BrowserWindow
 } from 'electron';
 
-export default function createWindow(onClose = () => {}) {
-    const window = new BrowserWindow({
-        webPreferences: {
-            experimentalFeatures: true
+const staticUrl = `file://${__dirname}/index.html`;
+const serverUrl = `http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`;
+const isDevelopment = process.env.NODE_ENV === 'production';
+
+let window = null;
+
+export default function createWindow() {
+    if (window != null) return;
+    window = new BrowserWindow({
+        'webPreferences': {
+            experimentalFeatures: true,
+            webSecurity: false
         },
-        width: 1100,
-        height: 700,
+        'width': 1100,
+        'height': 700,
         'min-height': 300,
         'min-width': 300
     });
 
-    const url = process.env.NODE_ENV == 'production'
-        ? `file://${__dirname}/index.html`
-        : `http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`;
+    window.loadURL(isDevelopment ? staticUrl : serverUrl);
+    window.on('closed', () => window = null);
 
-    window.loadURL(url);
-    window.on('closed', onClose);
 
-    window.webContents.openDevTools();
-    window.webContents.on('devtools-opened', () => {
-        window.focus();
-        setImmediate(() => window.focus());
-    });
+    //  Install `vue-devtools`
+    if (process.env.NODE_ENV === 'development') {
+        window.webContents.openDevTools();
+        window.webContents.on('devtools-opened', () => setImmediate(() => window.focus()));
 
-    // Install `vue-devtools`
-    // if (process.env.NODE_ENV === 'development') {
-    //     const installExtension = require('electron-devtools-installer');
-    //     installExtension.default(installExtension.VUEJS_DEVTOOLS)
-    //         .then(name => {
-    //             console.log(`Added Extension: ${name}`);
-    //         })
-    //         .catch(err => {
-    //             console.log('Unable to install `vue-devtools`: \n', err);
-    //         });
-    //     require('devtron').install();
-    // }
+        const installExtension = require('electron-devtools-installer');
+        installExtension
+            .default(installExtension.VUEJS_DEVTOOLS)
+            .then(name => console.log(`Added Extension: ${name}`))
+            .catch(err => console.log('Unable to install `vue-devtools`: \n', err));
+        require('devtron').install();
+    }
 
     return window;
 }

@@ -6,20 +6,9 @@ import {
 
 import window from './index.window';
 
-let main;
-
-const initMain = () => {
-    main = window(() => {
-        main = null;
-    });
-};
-
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
 });
 
-app.on('activate', () => {
-    if (main === null) initMain();
-});
-
-app.on('ready', initMain);
+app.on('activate', window);
+app.on('ready', window);
