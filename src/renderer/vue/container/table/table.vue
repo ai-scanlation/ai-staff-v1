@@ -31,9 +31,11 @@ export default {
             default: true
         }
     },
-    data: () => ({
-        selectionIndex: 0
-    }),
+    data() {
+        return {
+            selectionIndex: 0
+        };
+    },
     watch: include(require.context('./watch/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
     mounted() {
         style.set(this, {

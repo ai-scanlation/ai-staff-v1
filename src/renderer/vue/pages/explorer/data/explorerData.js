@@ -16,11 +16,7 @@ module.exports = {
                 visible: true
             }, '', '', '', '', '']
         ],
-        folders: [
-
-        ],
-        files: [
-
-        ]
+        folders: [],
+        files: []
     }
 };
