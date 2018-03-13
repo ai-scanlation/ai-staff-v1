@@ -5,6 +5,9 @@ import {
     style
 } from 'modules';
 
+import cellClick from './methods/cellClick';
+import updateStyle from './methods/updateStyle';
+
 export default {
     id: 'table',
     name: 'table-',
