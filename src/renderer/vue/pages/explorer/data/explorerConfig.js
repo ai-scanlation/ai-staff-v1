@@ -15,7 +15,7 @@ module.exports = {
             'string', /* 4 - Kích thước */
             'string', /* 5 - Đuôi */
             'string', /* 6 - Thời gian */
-            'file' /*   7 - Rename  */
+            'file' /*    7 - Rename  */
         ],
         'title': [
             'hide', /*   0 - data */
@@ -25,7 +25,7 @@ module.exports = {
             'string', /* 4 - Kích thước */
             'string', /* 5 - Đuôi */
             'string', /* 6 - Thời gian */
-            'string' /* 7 - Rename  */
+            'string' /*  7 - Rename  */
         ]
     },
     style: {
@@ -119,11 +119,6 @@ module.exports = {
         }
     },
     nativeOn: {
-        'title[1]': {
-            click(event, cell, cellIndex) {
-                console.log(event, cell, cellIndex);
-            }
-        },
         'title[2]': {
             click() {
                 find('explorer').selectFile('toggleAll');
