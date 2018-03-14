@@ -7,6 +7,7 @@ import {
 
 import cellClick from './methods/cellClick';
 import updateStyle from './methods/updateStyle';
+import render from './tableRender';
 
 export default {
     id: 'table',
@@ -49,13 +50,16 @@ export default {
     },
     beforeUpdate() {
         this.time = new Date().getTime();
-        console.time('table[' + this._uid + ']' + this.time);
+        console.time(`table[${this._uid}]${this.time}`);
     },
     updated() {
-        console.time('table[' + this._uid + ']' + this.time);
+        console.time(`table[${this._uid}]${this.time}`);
     },
-    methods: include(require.context('./methods/', true, /[^/]+\.js$/), 1, 4, 'js', /src/),
-    render: require('./tableRender'),
+    methods: {
+        cellClick,
+        updateStyle,
+    },
+    render,
     style: {
         group: 'default',
         overwrite: false,
