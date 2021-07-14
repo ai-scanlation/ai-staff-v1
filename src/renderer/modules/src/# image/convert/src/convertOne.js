@@ -19,7 +19,7 @@ module.exports = function convertOne(file, options = {}, each = () => {}) {
             .join(' ');
     }
     const setting = find('setting');
-    const convertCommand = `"${setting.imagemagick}\\convert" ${optionsText} "${file.source}[${file.layer === undefined ? 0 : file.layer}]" "${file.target}"`;
+    const convertCommand = `"${setting.imagemagick}\\magick" convert ${optionsText} "${file.source}[${file.layer === undefined ? 0 : file.layer}]" "${file.target}"`;
     exec(convertCommand, {
         encoding: 'utf8'
     }, err => each(err, file));
