@@ -8,6 +8,10 @@
         "dist": "yarn compile && electron-builder",
         "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
     },
+    "volta": {
+        "node": "8.17.0",
+        "yarn": "1.22.22"
+    },
     "electronWebpack": {
         "main": {
             "sourceDirectory": "src/main"
