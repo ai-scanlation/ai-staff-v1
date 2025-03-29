@@ -3,10 +3,18 @@
     "files.exclude": {
         "**/.vscode": true,
         "**/node_modules": true,
-        "render": true,
-        "dist": true,
-        "package-lock.json": true,
-        "yarn.lock": true
+        "**/.sass-cache": true,
+        // "render": true,
+        // "dist": true,
+        // ".babelrc": true,
+        // ".eslintrc": true,
+        // ".gitattributes": true,
+        // ".gitignore": true,
+        // ".jsbeautifyrc": true,
+        // "favicon.ico": true,
+        // "**/*.svg": true,
+        // "package-lock.json": true,
+        // "yarn.lock": true
     },
 
     // Eslint

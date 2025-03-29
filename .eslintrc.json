@@ -5,10 +5,11 @@
         "es6": true
     },
     "extends": [
+        "eslint:recommended",
         "plugin:vue/recommended"
     ],
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 8,
         "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true,
@@ -19,6 +20,20 @@
         "vue"
     ],
     "rules": {
+        "vue/max-attributes-per-line": [2, {
+            "singleline": 1,
+            "multiline": {
+                "max": 1,
+                "allowFirstLine": true
+            }
+        }],
+        "vue/html-indent": ["error", 4, {
+            "attribute": 1,
+            "closeBracket": 0,
+            "alignAttributesVertically": true,
+            "ignores": []
+        }],
+        "vue/name-property-casing": ["error", "kebab-case"],
         "indent": [
             "warn",
             4, {
@@ -39,11 +54,12 @@
             "error",
             "always"
         ],
+        "no-debugger": "off",
         "no-console": "off",
-        "no-unused-vars": "warn",
+        "no-unused-vars": "off",
         "space-before-function-paren": ["error", "never"],
         "operator-linebreak": ["error", "before"],
-        "eol-last": "off",
+        "eol-last": ["error", "always"],
         "no-throw-literal": "off",
         "prefer-const": "error"
     }

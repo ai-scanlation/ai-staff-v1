@@ -1,0 +1,25 @@
+{
+    "null": "meteor",
+    "file": "file",
+    "folder": "folder",
+    "folder_back": "back",
+    "folder_complete": "folder_complete",
+
+    ".psd": "photoshop",
+    ".jpg": "image",
+    ".jpeg": "image",
+    ".png": "image",
+    ".bmp": "image",
+    ".docx": "word",
+    ".doc": "word",
+    ".xlsx": "excel",
+    ".xls": "excel",
+    ".ini": "ini",
+    ".txt": "text",
+    ".ttf": "font",
+    ".rar": "zip",
+    ".zip": "zip",
+    ".7zip": "zip",
+    ".mp3": "mp3",
+    ".mp4": "mp4"
+}
